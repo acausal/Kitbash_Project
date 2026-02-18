@@ -12,7 +12,7 @@ This document explains how to effectively collaborate with Claude on Kitbash dev
 - Routes queries through a layered cascade: **GRAIN** (crystallized facts, <1ms) → **CARTRIDGE** (domain knowledge, <200ms) → **ESCALATE** (future reasoning)
 - Maintains an epistemological stack (L0 empirical facts, L1 narrative knowledge, L2+ reasoning)
 - Coordinates background work through a metabolism cycle (heartbeat, resonance tracking, grain crystallization)
-- Designed to integrate with external systems (SillyTavern, etc.) via HTTP API
+- Designed to integrate with external systems (SillyTavern pivoted from - Kobold.cpp now target as ST has compatibility issues) via HTTP API
 
 ### Current State
 - ✅ Query orchestrator working
