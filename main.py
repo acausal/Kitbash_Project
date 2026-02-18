@@ -30,6 +30,7 @@ from dataclasses import dataclass, asdict
 
 from fastapi import FastAPI, HTTPException
 from fastapi.responses import JSONResponse
+from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel, Field
 
 # --- Path setup: Map 'kitbash' namespace to local directories ---
@@ -253,6 +254,15 @@ app = FastAPI(
     title="Kitbash Knowledge Orchestration API",
     description="Phase 3C MVP - Turn QueryOrchestrator into a callable HTTP service",
     version="0.1.0",
+)
+
+# --- CORS middleware for cross-origin requests (SillyTavern integration) ---
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],  # Allow all origins (can be restricted to specific hosts if needed)
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
 )
 
 
