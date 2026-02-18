@@ -31,7 +31,7 @@ from dataclasses import dataclass, asdict
 from fastapi import FastAPI, HTTPException
 from fastapi.responses import JSONResponse
 from fastapi.middleware.cors import CORSMiddleware
-from pydantic import BaseModel, Field
+from pydantic import BaseModel, Field, ConfigDict
 
 # --- Path setup: Map 'kitbash' namespace to local directories ---
 SRC_DIR = Path(__file__).resolve().parent / "src"
@@ -158,11 +158,20 @@ class ChatMessage(BaseModel):
 
 class ChatCompletionRequest(BaseModel):
     """OpenAI Chat Completions request format."""
+    model_config = ConfigDict(extra="ignore")  # Ignore extra fields (SillyTavern sends many)
+
     model: str = Field(default="kitbash", description="Model ID (ignored, always uses Kitbash)")
     messages: List[ChatMessage] = Field(..., description="List of messages")
     temperature: Optional[float] = Field(default=0.7, description="Temperature (ignored, Kitbash uses confidence)")
     max_tokens: Optional[int] = Field(default=None, description="Max tokens (ignored)")
     top_p: Optional[float] = Field(default=1.0, description="Top-p (ignored)")
+    top_k: Optional[int] = Field(default=None, description="Top-k (ignored)")
+    frequency_penalty: Optional[float] = Field(default=0.0, description="Frequency penalty (ignored)")
+    presence_penalty: Optional[float] = Field(default=0.0, description="Presence penalty (ignored)")
+    stream: Optional[bool] = Field(default=False, description="Stream mode (not yet supported)")
+    stop: Optional[List[str]] = Field(default=None, description="Stop sequences (ignored)")
+    logit_bias: Optional[Dict[str, float]] = Field(default=None, description="Logit bias (ignored)")
+    seed: Optional[int] = Field(default=None, description="Random seed (ignored)")
 
 
 class ChatCompletionChoice(BaseModel):
