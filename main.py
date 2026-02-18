@@ -148,6 +148,24 @@ class InfoResponse(BaseModel):
     metrics: Dict[str, Any]
 
 
+# --- Fact injection models (for internal agent use) ---
+
+class Fact(BaseModel):
+    """A single fact with confidence and source."""
+    text: str = Field(..., description="The fact text")
+    confidence: Optional[float] = Field(None, description="Confidence score (0-1)")
+    source: Optional[str] = Field(None, description="Which engine returned this fact (GRAIN, CARTRIDGE, etc.)")
+
+
+class FactsResponse(BaseModel):
+    """Response for /api/facts endpoint - fact injection interface."""
+    query: str = Field(..., description="The original query")
+    facts: List[str] = Field(..., description="List of fact texts (when verbose=false)")
+    facts_detailed: Optional[List[Fact]] = Field(None, description="List of facts with metadata (when verbose=true)")
+    verbose: bool = Field(default=False, description="Whether confidence/source are included")
+    limit: int = Field(default=3, description="Number of facts returned")
+
+
 # --- OpenAI-compatible Chat Completions models (Phase 3D: SillyTavern integration) ---
 
 class ChatMessage(BaseModel):
@@ -389,6 +407,89 @@ async def api_batch_query(request: BatchQueryRequest) -> Dict[str, Any]:
             })
 
     return {"results": results, "total": len(results), "succeeded": len([r for r in results if "error" not in r])}
+
+
+@app.get("/api/facts", response_model=FactsResponse)
+async def api_facts(
+    query: str,
+    limit: int = 3,
+    verbose: bool = False,
+) -> FactsResponse:
+    """
+    Get grounded facts for a query (fact injection interface for internal agents).
+
+    Returns top N facts with optional confidence scores and sources.
+
+    Args:
+        query: The question to get facts for
+        limit: Maximum number of facts to return (default 3)
+        verbose: Include confidence scores and sources (default false)
+
+    Returns:
+        FactsResponse with facts formatted for prompt injection
+    """
+    if not query or not query.strip():
+        raise HTTPException(status_code=400, detail="Query cannot be empty")
+
+    if len(query) > 2000:
+        raise HTTPException(status_code=400, detail="Query too long (max 2000 characters)")
+
+    if limit < 1 or limit > 20:
+        raise HTTPException(status_code=400, detail="Limit must be between 1 and 20")
+
+    try:
+        # Process query through orchestrator
+        result: QueryResult = _orchestrator.process_query(query, {"source": "facts_injection"})
+
+        logger.info(f"Facts request: query='{query[:50]}', limit={limit}, verbose={verbose}")
+
+        # Extract facts from result
+        # For now, we'll use the primary answer as a fact
+        # In the future, we could extract multiple facts from layer_results
+        facts_list = []
+
+        if result.answer and result.answer != "I don't know.":
+            facts_list.append({
+                "text": result.answer,
+                "confidence": result.confidence,
+                "source": result.engine_name,
+            })
+
+        # Limit to requested number
+        facts_list = facts_list[:limit]
+
+        # Format response based on verbose flag
+        if verbose:
+            # Return detailed facts with confidence and source
+            facts_detailed = [
+                Fact(
+                    text=f["text"],
+                    confidence=round(f["confidence"], 2),
+                    source=f["source"]
+                )
+                for f in facts_list
+            ]
+            return FactsResponse(
+                query=query,
+                facts=[],
+                facts_detailed=facts_detailed,
+                verbose=True,
+                limit=len(facts_list),
+            )
+        else:
+            # Return just the text (clean for prompt injection)
+            facts_text = [f["text"] for f in facts_list]
+            return FactsResponse(
+                query=query,
+                facts=facts_text,
+                facts_detailed=None,
+                verbose=False,
+                limit=len(facts_list),
+            )
+
+    except Exception as e:
+        logger.error(f"Facts request failed: {e}", exc_info=True)
+        raise HTTPException(status_code=500, detail=f"Facts request failed: {str(e)}")
 
 
 @app.get("/health", response_model=HealthResponse)
