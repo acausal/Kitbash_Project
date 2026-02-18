@@ -1,0 +1,17 @@
+# Kitbash Extended MVP - Requirements
+# Phase 3C: FastAPI HTTP Service
+
+# Core API & Web Framework
+fastapi>=0.104.0
+uvicorn>=0.24.0
+pydantic>=2.0.0
+
+# Optional: Redis (for diagnostics, DiagnosticFeed)
+# Gracefully degraded if unavailable - queries still process
+redis>=5.0.0
+
+# Standard library (included, no install needed):
+# - sys, time, uuid, json, logging, pathlib, dataclasses, typing, os, hashlib
+# - datetime, collections, enum, abc
+
+# Python version: 3.10+ (tested with 3.11.14)
