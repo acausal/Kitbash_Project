@@ -3,12 +3,15 @@
 Kitbash FastAPI HTTP Service
 
 Phase 3C: Turn QueryOrchestrator into a callable HTTP service.
+Phase 3D: Add OpenAI-compatible Chat Completions endpoint for SillyTavern integration.
 
 Endpoints:
-  POST   /api/query         - Single query
-  POST   /api/batch_query   - Multiple queries
-  GET    /health            - Service health check
-  GET    /info              - Service information & stats
+  POST   /api/query            - Single query (Kitbash native format)
+  POST   /api/batch_query      - Multiple queries
+  GET    /health               - Service health check
+  GET    /info                 - Service information & stats
+  POST   /v1/chat/completions  - OpenAI-compatible Chat Completions (for SillyTavern)
+  GET    /v1/models            - List available models (for SillyTavern)
 
 Usage:
   uvicorn main:app --host 0.0.0.0 --port 8001
@@ -142,6 +145,54 @@ class InfoResponse(BaseModel):
     cartridges: int
     grain_count: int
     metrics: Dict[str, Any]
+
+
+# --- OpenAI-compatible Chat Completions models (Phase 3D: SillyTavern integration) ---
+
+class ChatMessage(BaseModel):
+    """Message in OpenAI Chat Completions format."""
+    role: str = Field(..., description="Message role: 'user', 'assistant', or 'system'")
+    content: str = Field(..., description="Message content")
+
+
+class ChatCompletionRequest(BaseModel):
+    """OpenAI Chat Completions request format."""
+    model: str = Field(default="kitbash", description="Model ID (ignored, always uses Kitbash)")
+    messages: List[ChatMessage] = Field(..., description="List of messages")
+    temperature: Optional[float] = Field(default=0.7, description="Temperature (ignored, Kitbash uses confidence)")
+    max_tokens: Optional[int] = Field(default=None, description="Max tokens (ignored)")
+    top_p: Optional[float] = Field(default=1.0, description="Top-p (ignored)")
+
+
+class ChatCompletionChoice(BaseModel):
+    """Choice in Chat Completions response."""
+    index: int
+    message: ChatMessage
+    finish_reason: str
+
+
+class ChatCompletionResponse(BaseModel):
+    """OpenAI Chat Completions response format."""
+    id: str
+    object: str = "chat.completion"
+    created: int
+    model: str = "kitbash"
+    choices: List[ChatCompletionChoice]
+    usage: Dict[str, int]
+
+
+class ModelInfo(BaseModel):
+    """Model info in models list."""
+    id: str
+    object: str = "model"
+    owned_by: str = "kitbash"
+    permission: List[Dict[str, Any]] = Field(default_factory=list)
+
+
+class ModelsResponse(BaseModel):
+    """Response for /v1/models endpoint."""
+    object: str = "list"
+    data: List[ModelInfo]
 
 
 # --- Global orchestrator instance ---
@@ -405,6 +456,83 @@ async def root():
         "docs_url": "/docs",
         "openapi_url": "/openapi.json",
     }
+
+
+# --- Phase 3D: OpenAI-compatible Chat Completions endpoints (SillyTavern integration) ---
+
+@app.post("/v1/chat/completions", response_model=ChatCompletionResponse)
+async def chat_completions(request: ChatCompletionRequest) -> ChatCompletionResponse:
+    """
+    OpenAI-compatible Chat Completions endpoint for SillyTavern integration.
+
+    Converts OpenAI message format to Kitbash query format and routes through orchestrator.
+    """
+    if not request.messages:
+        raise HTTPException(status_code=400, detail="Messages cannot be empty")
+
+    try:
+        # Extract the user's latest message (last one from 'user' role)
+        user_message = None
+        for msg in reversed(request.messages):
+            if msg.role == "user":
+                user_message = msg.content
+                break
+
+        if not user_message:
+            raise HTTPException(status_code=400, detail="No user message found in request")
+
+        # Process through Kitbash orchestrator
+        result: QueryResult = _orchestrator.process_query(user_message, {"source": "openai_compat"})
+
+        # Build OpenAI-compatible response
+        import time as time_module
+        response = ChatCompletionResponse(
+            id=f"kitbash-{result.query_id}",
+            created=int(time_module.time()),
+            choices=[
+                ChatCompletionChoice(
+                    index=0,
+                    message=ChatMessage(
+                        role="assistant",
+                        content=result.answer or "No answer found"
+                    ),
+                    finish_reason="stop"
+                )
+            ],
+            usage={
+                "prompt_tokens": len(user_message.split()),
+                "completion_tokens": len((result.answer or "").split()),
+                "total_tokens": len(user_message.split()) + len((result.answer or "").split())
+            }
+        )
+
+        return response
+
+    except HTTPException:
+        raise
+    except Exception as e:
+        logger.error(f"Chat completions request failed: {e}", exc_info=True)
+        raise HTTPException(status_code=500, detail=f"Chat completions failed: {str(e)}")
+
+
+@app.get("/v1/models", response_model=ModelsResponse)
+async def list_models() -> ModelsResponse:
+    """
+    List available models (OpenAI-compatible endpoint).
+
+    Returns Kitbash as the available model for SillyTavern model selection.
+    """
+    try:
+        return ModelsResponse(
+            data=[
+                ModelInfo(id="kitbash"),
+                ModelInfo(id="kitbash-grain"),
+                ModelInfo(id="kitbash-cartridge"),
+            ]
+        )
+    except Exception as e:
+        logger.error(f"Models request failed: {e}", exc_info=True)
+        raise HTTPException(status_code=500, detail=f"Models request failed: {str(e)}")
 
 
 if __name__ == "__main__":
