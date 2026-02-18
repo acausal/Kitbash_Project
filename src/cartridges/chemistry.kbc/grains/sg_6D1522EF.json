@@ -1,0 +1,28 @@
+{
+  "grain_id": "sg_6D1522EF",
+  "fact_id": 29,
+  "cartridge_source": "chemistry",
+  "axiom_link": "domain_concept",
+  "lock_state": "Sicherman_Validated",
+  "weight": 0.0,
+  "delta": {
+    "positive": [],
+    "negative": [],
+    "void": []
+  },
+  "confidence": 0.9577391304347825,
+  "cycles_locked": 444,
+  "validation_timestamp": "2026-02-13T14:30:34.769115+00:00",
+  "pointer_map": {
+    "positive_ptrs": {},
+    "negative_ptrs": {},
+    "void_ptrs": {},
+    "access_pattern": {
+      "hit_count": 0,
+      "confidence": 0.9577391304347825,
+      "first_seen": 4,
+      "last_seen": 448
+    },
+    "total_bits": 0
+  }
+}

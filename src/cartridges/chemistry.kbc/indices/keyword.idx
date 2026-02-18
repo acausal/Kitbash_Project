@@ -1,0 +1,788 @@
+{
+  "units": [
+    1
+  ],
+  "surrounded": [
+    1
+  ],
+  "consisting": [
+    1
+  ],
+  "electrons": [
+    1,
+    3,
+    7,
+    9,
+    11,
+    12,
+    13
+  ],
+  "atoms": [
+    1,
+    5,
+    8,
+    10,
+    22
+  ],
+  "nucleus": [
+    1,
+    2,
+    3,
+    4
+  ],
+  "basic": [
+    32,
+    1
+  ],
+  "matter": [
+    1,
+    15
+  ],
+  "contains": [
+    2
+  ],
+  "protons": [
+    2,
+    4,
+    5,
+    6,
+    29,
+    30
+  ],
+  "neutrons": [
+    2,
+    5,
+    6
+  ],
+  "neutral": [
+    32,
+    2
+  ],
+  "charged": [
+    2,
+    3
+  ],
+  "positively": [
+    2
+  ],
+  "negatively": [
+    3
+  ],
+  "occupy": [
+    3
+  ],
+  "orbitals": [
+    3
+  ],
+  "particles": [
+    16,
+    25,
+    3
+  ],
+  "around": [
+    3
+  ],
+  "subatomic": [
+    3
+  ],
+  "element": [
+    4,
+    5
+  ],
+  "number": [
+    25,
+    4,
+    5,
+    6
+  ],
+  "atomic": [
+    4
+  ],
+  "defined": [
+    4
+  ],
+  "its": [
+    4,
+    6
+  ],
+  "same": [
+    5
+  ],
+  "numbers": [
+    5
+  ],
+  "isotopes": [
+    5
+  ],
+  "different": [
+    5
+  ],
+  "sum": [
+    6
+  ],
+  "atom": [
+    12,
+    6,
+    14
+  ],
+  "mass": [
+    6,
+    23
+  ],
+  "chemical": [
+    35,
+    37,
+    7,
+    8,
+    12,
+    22,
+    23,
+    24,
+    28
+  ],
+  "valence": [
+    7
+  ],
+  "outermost": [
+    7
+  ],
+  "participate": [
+    7
+  ],
+  "bonding": [
+    14,
+    7
+  ],
+  "shell": [
+    7
+  ],
+  "compounds": [
+    8
+  ],
+  "together": [
+    8
+  ],
+  "forces": [
+    8
+  ],
+  "hold": [
+    8
+  ],
+  "bonds": [
+    8,
+    9,
+    10,
+    11,
+    13
+  ],
+  "attraction": [
+    8
+  ],
+  "form": [
+    9,
+    26
+  ],
+  "non": [
+    9,
+    10
+  ],
+  "complete": [
+    9
+  ],
+  "transfer": [
+    9
+  ],
+  "through": [
+    9
+  ],
+  "ionic": [
+    9
+  ],
+  "metal": [
+    9,
+    10,
+    11
+  ],
+  "sharing": [
+    10
+  ],
+  "involve": [
+    10
+  ],
+  "covalent": [
+    10,
+    13
+  ],
+  "two": [
+    10
+  ],
+  "between": [
+    33,
+    10,
+    14
+  ],
+  "electron": [
+    10
+  ],
+  "pairs": [
+    10
+  ],
+  "among": [
+    11
+  ],
+  "sea": [
+    11
+  ],
+  "shared": [
+    11,
+    12,
+    13
+  ],
+  "cations": [
+    11
+  ],
+  "characterized": [
+    11
+  ],
+  "delocalized": [
+    11
+  ],
+  "metallic": [
+    11
+  ],
+  "ability": [
+    12
+  ],
+  "attract": [
+    12
+  ],
+  "measure": [
+    35,
+    12,
+    36
+  ],
+  "bond": [
+    12
+  ],
+  "electronegativity": [
+    12,
+    13
+  ],
+  "occur": [
+    37,
+    13
+  ],
+  "unequally": [
+    13
+  ],
+  "when": [
+    34,
+    20,
+    13
+  ],
+  "polar": [
+    13
+  ],
+  "due": [
+    13
+  ],
+  "differences": [
+    13
+  ],
+  "intermolecular": [
+    14
+  ],
+  "force": [
+    14
+  ],
+  "strong": [
+    14
+  ],
+  "highly": [
+    14
+  ],
+  "hydrogen": [
+    14
+  ],
+  "electronegative": [
+    14
+  ],
+  "primary": [
+    15
+  ],
+  "four": [
+    15
+  ],
+  "liquid": [
+    19,
+    20,
+    21,
+    15
+  ],
+  "states": [
+    23,
+    39,
+    15
+  ],
+  "gas": [
+    21,
+    15
+  ],
+  "plasma": [
+    15
+  ],
+  "solid": [
+    19,
+    21,
+    15
+  ],
+  "exists": [
+    15
+  ],
+  "solids": [
+    16
+  ],
+  "definite": [
+    16,
+    17,
+    18
+  ],
+  "volume": [
+    16,
+    17,
+    18
+  ],
+  "packed": [
+    16
+  ],
+  "positions": [
+    16
+  ],
+  "fixed": [
+    16
+  ],
+  "shape": [
+    16,
+    17,
+    18
+  ],
+  "have": [
+    16,
+    17,
+    18
+  ],
+  "closely": [
+    16
+  ],
+  "their": [
+    17
+  ],
+  "liquids": [
+    17
+  ],
+  "take": [
+    17
+  ],
+  "container": [
+    17
+  ],
+  "gases": [
+    18
+  ],
+  "expand": [
+    18
+  ],
+  "no": [
+    18
+  ],
+  "any": [
+    18
+  ],
+  "fill": [
+    18
+  ],
+  "space": [
+    18
+  ],
+  "available": [
+    18
+  ],
+  "phase": [
+    19
+  ],
+  "melting": [
+    19
+  ],
+  "transition": [
+    19
+  ],
+  "input": [
+    19
+  ],
+  "energy": [
+    37,
+    38,
+    39,
+    19,
+    26,
+    27
+  ],
+  "heat": [
+    35,
+    26,
+    19
+  ],
+  "requiring": [
+    19
+  ],
+  "pressure": [
+    20
+  ],
+  "atmospheric": [
+    20
+  ],
+  "boiling": [
+    20
+  ],
+  "occurs": [
+    20
+  ],
+  "external": [
+    20
+  ],
+  "equals": [
+    20
+  ],
+  "vapor": [
+    20
+  ],
+  "without": [
+    28,
+    21
+  ],
+  "process": [
+    21
+  ],
+  "becoming": [
+    21
+  ],
+  "changes": [
+    34,
+    21
+  ],
+  "where": [
+    21
+  ],
+  "directly": [
+    21
+  ],
+  "sublimation": [
+    21
+  ],
+  "into": [
+    21,
+    22
+  ],
+  "rearrangement": [
+    22
+  ],
+  "products": [
+    24,
+    22
+  ],
+  "transform": [
+    22
+  ],
+  "involves": [
+    22
+  ],
+  "reaction": [
+    33,
+    37,
+    38,
+    22,
+    23,
+    28
+  ],
+  "reactants": [
+    24,
+    22
+  ],
+  "law": [
+    39,
+    23
+  ],
+  "conservation": [
+    23
+  ],
+  "nor": [
+    23
+  ],
+  "destroyed": [
+    39,
+    23
+  ],
+  "neither": [
+    23
+  ],
+  "created": [
+    39,
+    23
+  ],
+  "reactions": [
+    24,
+    26,
+    27
+  ],
+  "relative": [
+    24
+  ],
+  "stoichiometry": [
+    24
+  ],
+  "calculation": [
+    24
+  ],
+  "quantities": [
+    24
+  ],
+  "mole": [
+    25
+  ],
+  "avogadro": [
+    25
+  ],
+  "representing": [
+    25
+  ],
+  "022": [
+    25
+  ],
+  "10": [
+    25
+  ],
+  "unit": [
+    25
+  ],
+  "23": [
+    25
+  ],
+  "usually": [
+    26
+  ],
+  "surroundings": [
+    26,
+    27
+  ],
+  "release": [
+    26
+  ],
+  "exothermic": [
+    26
+  ],
+  "absorb": [
+    27
+  ],
+  "endothermic": [
+    27
+  ],
+  "proceed": [
+    27
+  ],
+  "being": [
+    28
+  ],
+  "increase": [
+    28
+  ],
+  "catalysts": [
+    28
+  ],
+  "substances": [
+    28,
+    29,
+    30
+  ],
+  "consumed": [
+    28
+  ],
+  "rate": [
+    28
+  ],
+  "solution": [
+    29,
+    30,
+    31
+  ],
+  "ions": [
+    29,
+    30
+  ],
+  "acids": [
+    29
+  ],
+  "donate": [
+    29,
+    30
+  ],
+  "bases": [
+    30
+  ],
+  "oh": [
+    30
+  ],
+  "hydroxide": [
+    30
+  ],
+  "accept": [
+    30
+  ],
+  "acidity": [
+    31
+  ],
+  "ph": [
+    32,
+    34,
+    31
+  ],
+  "scale": [
+    31
+  ],
+  "14": [
+    31
+  ],
+  "measures": [
+    31
+  ],
+  "alkalinity": [
+    31
+  ],
+  "ranging": [
+    31
+  ],
+  "acidic": [
+    32
+  ],
+  "above": [
+    32
+  ],
+  "values": [
+    32
+  ],
+  "below": [
+    32
+  ],
+  "base": [
+    33,
+    34
+  ],
+  "water": [
+    33
+  ],
+  "acid": [
+    33,
+    34
+  ],
+  "neutralization": [
+    33
+  ],
+  "produces": [
+    33
+  ],
+  "salt": [
+    33
+  ],
+  "resist": [
+    34
+  ],
+  "solutions": [
+    34
+  ],
+  "small": [
+    34
+  ],
+  "added": [
+    34
+  ],
+  "amounts": [
+    34
+  ],
+  "buffers": [
+    34
+  ],
+  "total": [
+    35
+  ],
+  "enthalpy": [
+    35
+  ],
+  "system": [
+    35,
+    36
+  ],
+  "content": [
+    35
+  ],
+  "disorder": [
+    36
+  ],
+  "entropy": [
+    36
+  ],
+  "degree": [
+    36
+  ],
+  "randomness": [
+    36
+  ],
+  "determines": [
+    37
+  ],
+  "spontaneously": [
+    37
+  ],
+  "gibbs": [
+    37,
+    38
+  ],
+  "will": [
+    37
+  ],
+  "whether": [
+    37
+  ],
+  "free": [
+    37,
+    38
+  ],
+  "if": [
+    38
+  ],
+  "negative": [
+    38
+  ],
+  "spontaneous": [
+    38
+  ],
+  "change": [
+    38
+  ],
+  "\u03b4g": [
+    38
+  ],
+  "cannot": [
+    39
+  ],
+  "first": [
+    39
+  ],
+  "transformed": [
+    39
+  ],
+  "only": [
+    39
+  ],
+  "thermodynamics": [
+    39
+  ]
+}
