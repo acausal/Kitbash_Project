@@ -1,0 +1,509 @@
+{
+  "set": [
+    1
+  ],
+  "reactions": [
+    1,
+    4,
+    14
+  ],
+  "chemical": [
+    1,
+    4,
+    7
+  ],
+  "divided": [
+    1
+  ],
+  "life": [
+    1
+  ],
+  "anabolism": [
+    1
+  ],
+  "up": [
+    1
+  ],
+  "breaking": [
+    1
+  ],
+  "metabolism": [
+    1
+  ],
+  "organisms": [
+    1,
+    4,
+    6
+  ],
+  "building": [
+    1,
+    9
+  ],
+  "sustaining": [
+    1
+  ],
+  "down": [
+    1,
+    12
+  ],
+  "into": [
+    1,
+    3,
+    12,
+    13
+  ],
+  "catabolism": [
+    1
+  ],
+  "primary": [
+    2
+  ],
+  "atp": [
+    2,
+    3,
+    5
+  ],
+  "metabolic": [
+    2,
+    3
+  ],
+  "many": [
+    8,
+    2,
+    15
+  ],
+  "processes": [
+    2,
+    18
+  ],
+  "cell": [
+    2
+  ],
+  "adenosine": [
+    2
+  ],
+  "providing": [
+    2
+  ],
+  "currency": [
+    2
+  ],
+  "energy": [
+    2,
+    4
+  ],
+  "triphosphate": [
+    2
+  ],
+  "pathway": [
+    3
+  ],
+  "converts": [
+    3
+  ],
+  "yielding": [
+    3
+  ],
+  "glycolysis": [
+    3
+  ],
+  "glucose": [
+    3
+  ],
+  "pyruvate": [
+    3
+  ],
+  "nadh": [
+    3,
+    5
+  ],
+  "used": [
+    4
+  ],
+  "aerobic": [
+    4,
+    13
+  ],
+  "cycle": [
+    4
+  ],
+  "all": [
+    4
+  ],
+  "series": [
+    4
+  ],
+  "acid": [
+    4
+  ],
+  "generate": [
+    4
+  ],
+  "krebs": [
+    4
+  ],
+  "citric": [
+    4
+  ],
+  "fadh2": [
+    5
+  ],
+  "process": [
+    5,
+    7,
+    8,
+    13,
+    16
+  ],
+  "oxygen": [
+    5
+  ],
+  "transferred": [
+    5
+  ],
+  "when": [
+    5
+  ],
+  "electrons": [
+    5
+  ],
+  "oxidative": [
+    5
+  ],
+  "phosphorylation": [
+    5
+  ],
+  "which": [
+    16,
+    5,
+    14
+  ],
+  "synthesized": [
+    5
+  ],
+  "proteins": [
+    9,
+    10,
+    6,
+    17
+  ],
+  "starch": [
+    6
+  ],
+  "dna": [
+    6
+  ],
+  "living": [
+    6
+  ],
+  "polymers": [
+    6
+  ],
+  "biopolymers": [
+    6
+  ],
+  "produced": [
+    6
+  ],
+  "cellulose": [
+    6
+  ],
+  "water": [
+    7
+  ],
+  "bond": [
+    7
+  ],
+  "hydrolysis": [
+    7
+  ],
+  "splitting": [
+    7
+  ],
+  "anion": [
+    7
+  ],
+  "hydroxide": [
+    7
+  ],
+  "involving": [
+    7
+  ],
+  "addition": [
+    7
+  ],
+  "hydrogen": [
+    7
+  ],
+  "decomposition": [
+    7
+  ],
+  "cation": [
+    7
+  ],
+  "form": [
+    8
+  ],
+  "monomers": [
+    8
+  ],
+  "chemically": [
+    8
+  ],
+  "combining": [
+    8
+  ],
+  "polymer": [
+    8,
+    12
+  ],
+  "polymerization": [
+    8
+  ],
+  "compounds": [
+    9
+  ],
+  "acids": [
+    9,
+    10
+  ],
+  "blocks": [
+    9
+  ],
+  "as": [
+    9,
+    11
+  ],
+  "serve": [
+    9
+  ],
+  "amino": [
+    9,
+    10
+  ],
+  "organic": [
+    9,
+    11,
+    13
+  ],
+  "together": [
+    10
+  ],
+  "peptide": [
+    10
+  ],
+  "link": [
+    10
+  ],
+  "dehydration": [
+    10
+  ],
+  "reaction": [
+    10
+  ],
+  "through": [
+    10
+  ],
+  "synthesis": [
+    10
+  ],
+  "bonds": [
+    10
+  ],
+  "bacteria": [
+    11
+  ],
+  "biodegradation": [
+    11,
+    13
+  ],
+  "such": [
+    11
+  ],
+  "microorganisms": [
+    11
+  ],
+  "algae": [
+    11
+  ],
+  "fungi": [
+    11
+  ],
+  "substances": [
+    11,
+    15
+  ],
+  "breakdown": [
+    11
+  ],
+  "long": [
+    12
+  ],
+  "absorbable": [
+    12
+  ],
+  "chains": [
+    12
+  ],
+  "break": [
+    12
+  ],
+  "plastics": [
+    12
+  ],
+  "involves": [
+    12
+  ],
+  "smaller": [
+    12
+  ],
+  "molecules": [
+    17,
+    12
+  ],
+  "often": [
+    12
+  ],
+  "degradation": [
+    12
+  ],
+  "extracellular": [
+    12
+  ],
+  "enzymes": [
+    12,
+    14,
+    15
+  ],
+  "microbial": [
+    12
+  ],
+  "waste": [
+    13
+  ],
+  "soil": [
+    13
+  ],
+  "nutrient": [
+    13
+  ],
+  "transforms": [
+    13
+  ],
+  "amendment": [
+    13
+  ],
+  "composting": [
+    13
+  ],
+  "rich": [
+    13
+  ],
+  "specific": [
+    13
+  ],
+  "rate": [
+    14
+  ],
+  "kinetics": [
+    14
+  ],
+  "describes": [
+    14
+  ],
+  "catalyze": [
+    14
+  ],
+  "biochemical": [
+    14
+  ],
+  "enzyme": [
+    14
+  ],
+  "inorganic": [
+    15
+  ],
+  "cofactors": [
+    15
+  ],
+  "coenzymes": [
+    15
+  ],
+  "ions": [
+    15
+  ],
+  "function": [
+    15
+  ],
+  "require": [
+    15
+  ],
+  "metal": [
+    15
+  ],
+  "cellular": [
+    16,
+    17
+  ],
+  "signals": [
+    16
+  ],
+  "signaling": [
+    16,
+    17
+  ],
+  "cells": [
+    16
+  ],
+  "external": [
+    16
+  ],
+  "stimuli": [
+    16
+  ],
+  "respond": [
+    16
+  ],
+  "initiate": [
+    17
+  ],
+  "responses": [
+    17
+  ],
+  "bind": [
+    17
+  ],
+  "ligands": [
+    17
+  ],
+  "receptors": [
+    17
+  ],
+  "production": [
+    18
+  ],
+  "entities": [
+    18
+  ],
+  "structures": [
+    18
+  ],
+  "design": [
+    18
+  ],
+  "materials": [
+    18
+  ],
+  "modeled": [
+    18
+  ],
+  "biological": [
+    18
+  ],
+  "biomimicry": [
+    18
+  ],
+  "systems": [
+    18
+  ]
+}
