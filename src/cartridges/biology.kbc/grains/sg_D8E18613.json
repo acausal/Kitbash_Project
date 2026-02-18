@@ -1,0 +1,35 @@
+{
+  "grain_id": "sg_D8E18613",
+  "fact_id": 19,
+  "cartridge_source": "biology",
+  "axiom_link": "domain_concept",
+  "lock_state": "Sicherman_Validated",
+  "weight": 1.58,
+  "delta": {
+    "positive": [],
+    "negative": [
+      "inferred:nother (prey)"
+    ],
+    "void": []
+  },
+  "confidence": 0.943125,
+  "cycles_locked": 449,
+  "validation_timestamp": "2026-02-13T14:30:34.538323+00:00",
+  "pointer_map": {
+    "positive_ptrs": {},
+    "negative_ptrs": {
+      "inferred:nother (prey)": {
+        "bit_position": 0,
+        "value": -1
+      }
+    },
+    "void_ptrs": {},
+    "access_pattern": {
+      "hit_count": 0,
+      "confidence": 0.943125,
+      "first_seen": 0,
+      "last_seen": 449
+    },
+    "total_bits": 1
+  }
+}

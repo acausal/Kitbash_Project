@@ -1,0 +1,199 @@
+{
+  "cartridge_name": "thermodynamics",
+  "version": "1.0.0",
+  "api_version": "1.0",
+  "created": "2026-02-13T00:06:32.042980+00:00",
+  "last_updated": "2026-02-13T00:06:32.121796+00:00",
+  "author": "Kitbash System",
+  "description": "Thermodynamics - energy, entropy, laws",
+  "domains": [
+    "Thermodynamics"
+  ],
+  "tags": [],
+  "dependencies": [],
+  "provides": [],
+  "grain_inventory": {
+    "sg_47D5F36B": {
+      "fact_id": 1,
+      "axiom_link": "domain_concept",
+      "lock_state": "Sicherman_Validated",
+      "confidence": 0.9550398724082935,
+      "weight": 0.0,
+      "crystallization_timestamp": "2026-02-13T14:30:36.889585+00:00"
+    },
+    "sg_84C9E415": {
+      "fact_id": 5,
+      "axiom_link": "domain_concept",
+      "lock_state": "Sicherman_Validated",
+      "confidence": 0.944475,
+      "weight": 0.0,
+      "crystallization_timestamp": "2026-02-13T14:30:36.889593+00:00"
+    },
+    "sg_B1D48CA1": {
+      "fact_id": 8,
+      "axiom_link": "domain_concept",
+      "lock_state": "Sicherman_Validated",
+      "confidence": 0.947828947368421,
+      "weight": 0.0,
+      "crystallization_timestamp": "2026-02-13T14:30:36.889596+00:00"
+    },
+    "sg_58B4CC92": {
+      "fact_id": 10,
+      "axiom_link": "domain_concept",
+      "lock_state": "Sicherman_Validated",
+      "confidence": 0.9399681020733652,
+      "weight": 0.0,
+      "crystallization_timestamp": "2026-02-13T14:30:36.889599+00:00"
+    },
+    "sg_297871D4": {
+      "fact_id": 16,
+      "axiom_link": "domain_concept",
+      "lock_state": "Sicherman_Validated",
+      "confidence": 0.944,
+      "weight": 0.0,
+      "crystallization_timestamp": "2026-02-13T14:30:36.889601+00:00"
+    },
+    "sg_31AB58D4": {
+      "fact_id": 17,
+      "axiom_link": "domain_concept",
+      "lock_state": "Sicherman_Validated",
+      "confidence": 0.941456043956044,
+      "weight": 0.0,
+      "crystallization_timestamp": "2026-02-13T14:30:36.889604+00:00"
+    },
+    "sg_D9AC4FB0": {
+      "fact_id": 18,
+      "axiom_link": "domain_concept",
+      "lock_state": "Sicherman_Validated",
+      "confidence": 0.9322926829268292,
+      "weight": 0.0,
+      "crystallization_timestamp": "2026-02-13T14:30:36.889607+00:00"
+    },
+    "sg_82B4CBF6": {
+      "fact_id": 20,
+      "axiom_link": "domain_concept",
+      "lock_state": "Sicherman_Validated",
+      "confidence": 0.9352747252747253,
+      "weight": 0.0,
+      "crystallization_timestamp": "2026-02-13T14:30:36.889610+00:00"
+    },
+    "sg_C036087A": {
+      "fact_id": 19,
+      "axiom_link": "domain_concept",
+      "lock_state": "Sicherman_Validated",
+      "confidence": 0.943125,
+      "weight": 0.0,
+      "crystallization_timestamp": "2026-02-13T14:30:36.889613+00:00"
+    },
+    "sg_183D8D03": {
+      "fact_id": 11,
+      "axiom_link": "domain_concept",
+      "lock_state": "Sicherman_Validated",
+      "confidence": 0.9423673469387756,
+      "weight": 0.0,
+      "crystallization_timestamp": "2026-02-13T14:30:36.889615+00:00"
+    },
+    "sg_0B235A73": {
+      "fact_id": 4,
+      "axiom_link": "domain_concept",
+      "lock_state": "Sicherman_Validated",
+      "confidence": 0.9420104895104895,
+      "weight": 0.0,
+      "crystallization_timestamp": "2026-02-13T14:30:36.889618+00:00"
+    },
+    "sg_100131B7": {
+      "fact_id": 6,
+      "axiom_link": "domain_concept",
+      "lock_state": "Sicherman_Validated",
+      "confidence": 0.9425703564727955,
+      "weight": 1.58,
+      "crystallization_timestamp": "2026-02-13T14:30:36.889620+00:00"
+    },
+    "sg_93386D2A": {
+      "fact_id": 2,
+      "axiom_link": "domain_concept",
+      "lock_state": "Sicherman_Validated",
+      "confidence": 0.9559405940594059,
+      "weight": 3.17,
+      "crystallization_timestamp": "2026-02-13T14:30:36.889623+00:00"
+    },
+    "sg_F1293A10": {
+      "fact_id": 7,
+      "axiom_link": "domain_concept",
+      "lock_state": "Sicherman_Validated",
+      "confidence": 0.9435658914728682,
+      "weight": 0.0,
+      "crystallization_timestamp": "2026-02-13T14:30:36.889625+00:00"
+    },
+    "sg_A78B2728": {
+      "fact_id": 15,
+      "axiom_link": "domain_concept",
+      "lock_state": "Sicherman_Validated",
+      "confidence": 0.9376848249027238,
+      "weight": 0.0,
+      "crystallization_timestamp": "2026-02-13T14:30:36.889628+00:00"
+    },
+    "sg_4336616C": {
+      "fact_id": 14,
+      "axiom_link": "domain_concept",
+      "lock_state": "Sicherman_Validated",
+      "confidence": 0.9351060358890702,
+      "weight": 0.0,
+      "crystallization_timestamp": "2026-02-13T14:30:36.889630+00:00"
+    },
+    "sg_F7C11BFC": {
+      "fact_id": 3,
+      "axiom_link": "domain_concept",
+      "lock_state": "Sicherman_Validated",
+      "confidence": 0.9486788617886178,
+      "weight": 3.17,
+      "crystallization_timestamp": "2026-02-13T14:30:36.889632+00:00"
+    },
+    "sg_4DC02189": {
+      "fact_id": 9,
+      "axiom_link": "domain_concept",
+      "lock_state": "Sicherman_Validated",
+      "confidence": 0.9403674121405751,
+      "weight": 0.0,
+      "crystallization_timestamp": "2026-02-13T14:30:36.889635+00:00"
+    },
+    "sg_E18097D7": {
+      "fact_id": 13,
+      "axiom_link": "domain_concept",
+      "lock_state": "Sicherman_Validated",
+      "confidence": 0.9453808752025932,
+      "weight": 0.0,
+      "crystallization_timestamp": "2026-02-13T14:30:36.889637+00:00"
+    },
+    "sg_F388876B": {
+      "fact_id": 21,
+      "axiom_link": "domain_concept",
+      "lock_state": "Sicherman_Validated",
+      "confidence": 0.9422482014388489,
+      "weight": 0.0,
+      "crystallization_timestamp": "2026-02-13T14:30:36.889639+00:00"
+    },
+    "sg_7C8C1A9F": {
+      "fact_id": 12,
+      "axiom_link": "domain_concept",
+      "lock_state": "Sicherman_Validated",
+      "confidence": 0.941741935483871,
+      "weight": 0.0,
+      "crystallization_timestamp": "2026-02-13T14:30:36.889642+00:00"
+    }
+  },
+  "axiom_coverage": [],
+  "license": "CC-BY-4.0",
+  "compression": {
+    "format": "ternary_grains",
+    "ratio": 0.0,
+    "original_size_mb": 0.0,
+    "compressed_size_mb": 0.0
+  },
+  "epistemic_level": "L0_EMPIRICAL",
+  "grain_crystallization": {
+    "timestamp": "2026-02-13T14:30:36.889644+00:00",
+    "grain_count": 21,
+    "phase": "2C_week_2"
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "grain_id": "sg_4DC02189",
+  "fact_id": 9,
+  "cartridge_source": "thermodynamics",
+  "axiom_link": "domain_concept",
+  "lock_state": "Sicherman_Validated",
+  "weight": 0.0,
+  "delta": {
+    "positive": [],
+    "negative": [],
+    "void": []
+  },
+  "confidence": 0.9403674121405751,
+  "cycles_locked": 448,
+  "validation_timestamp": "2026-02-13T14:30:36.887901+00:00",
+  "pointer_map": {
+    "positive_ptrs": {},
+    "negative_ptrs": {},
+    "void_ptrs": {},
+    "access_pattern": {
+      "hit_count": 0,
+      "confidence": 0.9403674121405751,
+      "first_seen": 1,
+      "last_seen": 449
+    },
+    "total_bits": 0
+  }
+}

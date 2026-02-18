@@ -1,0 +1,36 @@
+{
+  "cartridge_name": "thermodynamics",
+  "created_at": "2026-02-13T00:06:32.042966+00:00",
+  "last_updated": "2026-02-13T00:06:32.121134+00:00",
+  "last_accessed": "2026-02-13T00:06:32.042966+00:00",
+  "version": "1.0.0",
+  "status": "active",
+  "split_status": "intact",
+  "health": {
+    "fact_count": 21,
+    "active_facts": 21,
+    "archived_facts": 0,
+    "annotation_count": 21,
+    "grain_count": 0,
+    "index_size_kb": 10,
+    "total_size_mb": 0.0,
+    "access_distribution": "uniform",
+    "hot_fact_ratio": 0.0,
+    "avg_confidence": 0.94,
+    "last_validation": "2026-02-13T00:06:32.042966+00:00",
+    "validation_pass_rate": 1.0
+  },
+  "performance": {
+    "avg_query_latency_ms": 0,
+    "p95_query_latency_ms": 0,
+    "p99_query_latency_ms": 0,
+    "cache_hit_rate": 0.0,
+    "last_24h_queries": 0
+  },
+  "flags": {
+    "needs_split": false,
+    "needs_consolidation": false,
+    "needs_reindex": false,
+    "needs_grain_crystallization": false
+  }
+}

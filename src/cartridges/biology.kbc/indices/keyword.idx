@@ -1,0 +1,541 @@
+{
+  "long": [
+    1
+  ],
+  "proteins": [
+    1,
+    13
+  ],
+  "biomolecules": [
+    1
+  ],
+  "chains": [
+    1
+  ],
+  "residues": [
+    1
+  ],
+  "one": [
+    1,
+    19
+  ],
+  "more": [
+    1
+  ],
+  "acid": [
+    1
+  ],
+  "consisting": [
+    1
+  ],
+  "large": [
+    1
+  ],
+  "amino": [
+    1
+  ],
+  "being": [
+    2
+  ],
+  "without": [
+    2
+  ],
+  "biological": [
+    2,
+    6
+  ],
+  "reactions": [
+    2
+  ],
+  "chemical": [
+    16,
+    2
+  ],
+  "speed": [
+    2
+  ],
+  "up": [
+    2
+  ],
+  "cells": [
+    2,
+    10,
+    7
+  ],
+  "catalysts": [
+    2
+  ],
+  "within": [
+    2
+  ],
+  "enzymes": [
+    2
+  ],
+  "consumed": [
+    2
+  ],
+  "significantly": [
+    2
+  ],
+  "primary": [
+    3
+  ],
+  "sources": [
+    3
+  ],
+  "carbohydrates": [
+    3
+  ],
+  "starches": [
+    3
+  ],
+  "compounds": [
+    3
+  ],
+  "sugars": [
+    3
+  ],
+  "components": [
+    3
+  ],
+  "as": [
+    3
+  ],
+  "structural": [
+    3,
+    6
+  ],
+  "serve": [
+    3
+  ],
+  "organic": [
+    3
+  ],
+  "energy": [
+    9,
+    3,
+    4
+  ],
+  "cellulose": [
+    3
+  ],
+  "lipids": [
+    4
+  ],
+  "group": [
+    18,
+    4
+  ],
+  "diverse": [
+    4
+  ],
+  "hydrophobic": [
+    4
+  ],
+  "cell": [
+    8,
+    9,
+    4,
+    6
+  ],
+  "essential": [
+    4
+  ],
+  "storage": [
+    4
+  ],
+  "waxes": [
+    4
+  ],
+  "including": [
+    4
+  ],
+  "molecules": [
+    4
+  ],
+  "sterols": [
+    4
+  ],
+  "fats": [
+    4
+  ],
+  "membranes": [
+    4
+  ],
+  "information": [
+    13,
+    12,
+    5
+  ],
+  "dna": [
+    5,
+    11,
+    12,
+    13,
+    14
+  ],
+  "store": [
+    5
+  ],
+  "nucleic": [
+    5
+  ],
+  "acids": [
+    5
+  ],
+  "rna": [
+    11,
+    12,
+    5
+  ],
+  "transmit": [
+    5
+  ],
+  "genetic": [
+    13,
+    12,
+    5,
+    15
+  ],
+  "biopolymers": [
+    5
+  ],
+  "all": [
+    17,
+    6
+  ],
+  "known": [
+    6
+  ],
+  "functional": [
+    6
+  ],
+  "organisms": [
+    17,
+    19,
+    20,
+    6
+  ],
+  "unit": [
+    6
+  ],
+  "basic": [
+    6
+  ],
+  "bacteria": [
+    7
+  ],
+  "animals": [
+    7
+  ],
+  "organelles": [
+    9,
+    10,
+    7
+  ],
+  "whereas": [
+    7
+  ],
+  "plants": [
+    20,
+    7
+  ],
+  "bound": [
+    7
+  ],
+  "eukaryotic": [
+    7
+  ],
+  "membrane": [
+    8,
+    7
+  ],
+  "lack": [
+    7
+  ],
+  "contain": [
+    7
+  ],
+  "nucleus": [
+    7
+  ],
+  "prokaryotic": [
+    7
+  ],
+  "them": [
+    7
+  ],
+  "movement": [
+    8
+  ],
+  "permeable": [
+    8
+  ],
+  "barrier": [
+    8
+  ],
+  "out": [
+    8
+  ],
+  "selectively": [
+    8
+  ],
+  "controls": [
+    8
+  ],
+  "substances": [
+    8
+  ],
+  "cellular": [
+    9
+  ],
+  "generate": [
+    9
+  ],
+  "mitochondria": [
+    9
+  ],
+  "respiration": [
+    9
+  ],
+  "through": [
+    9,
+    15
+  ],
+  "plant": [
+    10
+  ],
+  "photosynthesis": [
+    10,
+    20
+  ],
+  "occurs": [
+    10
+  ],
+  "chloroplasts": [
+    10
+  ],
+  "where": [
+    10,
+    19
+  ],
+  "found": [
+    10
+  ],
+  "molecule": [
+    11
+  ],
+  "sequence": [
+    11,
+    14
+  ],
+  "function": [
+    11
+  ],
+  "gene": [
+    11
+  ],
+  "which": [
+    17,
+    11,
+    20
+  ],
+  "codes": [
+    11
+  ],
+  "has": [
+    11
+  ],
+  "dogma": [
+    12
+  ],
+  "flow": [
+    12
+  ],
+  "biology": [
+    12
+  ],
+  "molecular": [
+    12
+  ],
+  "central": [
+    12
+  ],
+  "describes": [
+    12
+  ],
+  "protein": [
+    12
+  ],
+  "chromosomes": [
+    13
+  ],
+  "structures": [
+    13
+  ],
+  "carry": [
+    13
+  ],
+  "composed": [
+    13
+  ],
+  "can": [
+    14
+  ],
+  "organism": [
+    19,
+    14
+  ],
+  "change": [
+    14
+  ],
+  "characteristics": [
+    14
+  ],
+  "alter": [
+    14
+  ],
+  "mutation": [
+    14
+  ],
+  "material": [
+    15
+  ],
+  "reproduction": [
+    15
+  ],
+  "sexual": [
+    15
+  ],
+  "variation": [
+    15
+  ],
+  "parents": [
+    15
+  ],
+  "two": [
+    15
+  ],
+  "combination": [
+    15
+  ],
+  "produces": [
+    15
+  ],
+  "homeostasis": [
+    16
+  ],
+  "living": [
+    16,
+    18
+  ],
+  "physical": [
+    16,
+    17
+  ],
+  "maintained": [
+    16
+  ],
+  "steady": [
+    16
+  ],
+  "state": [
+    16
+  ],
+  "internal": [
+    16
+  ],
+  "conditions": [
+    16
+  ],
+  "systems": [
+    16
+  ],
+  "ecosystem": [
+    17
+  ],
+  "consists": [
+    17
+  ],
+  "interact": [
+    17
+  ],
+  "environment": [
+    17
+  ],
+  "population": [
+    18
+  ],
+  "same": [
+    18
+  ],
+  "species": [
+    18
+  ],
+  "area": [
+    18
+  ],
+  "geographic": [
+    18
+  ],
+  "individuals": [
+    18
+  ],
+  "consumes": [
+    19
+  ],
+  "prey": [
+    19
+  ],
+  "interaction": [
+    19
+  ],
+  "predator": [
+    19
+  ],
+  "hunts": [
+    19
+  ],
+  "another": [
+    19
+  ],
+  "between": [
+    19
+  ],
+  "predation": [
+    19
+  ],
+  "synthesize": [
+    20
+  ],
+  "process": [
+    20
+  ],
+  "water": [
+    20
+  ],
+  "green": [
+    20
+  ],
+  "use": [
+    20
+  ],
+  "carbon": [
+    20
+  ],
+  "some": [
+    20
+  ],
+  "other": [
+    20
+  ],
+  "nutrients": [
+    20
+  ],
+  "dioxide": [
+    20
+  ],
+  "sunlight": [
+    20
+  ]
+}
