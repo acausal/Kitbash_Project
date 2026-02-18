@@ -1,0 +1,62 @@
+{
+  "version": "1.0",
+  "description": "Phase 3B query test suite. Categories map to expected triage routing paths.",
+  "categories": {
+    "explicit_fact": "Contains 'fact' keyword — routes GRAIN → CARTRIDGE",
+    "short": "≤5 words — routes GRAIN → BITNET → CARTRIDGE",
+    "medium": "6-15 words — routes GRAIN → CARTRIDGE → BITNET",
+    "long": ">15 words — routes CARTRIDGE → BITNET → ESCALATE",
+    "no_match": "Gibberish or out-of-domain — should escalate"
+  },
+  "queries": [
+    {"id": "q001", "text": "what is fact 1",           "category": "explicit_fact", "expect_layer": "GRAIN"},
+    {"id": "q002", "text": "tell me about fact 42",    "category": "explicit_fact", "expect_layer": "GRAIN"},
+    {"id": "q003", "text": "fact_id 100",              "category": "explicit_fact", "expect_layer": "GRAIN"},
+    {"id": "q004", "text": "lookup fact 7",            "category": "explicit_fact", "expect_layer": "GRAIN"},
+    {"id": "q005", "text": "get fact 200",             "category": "explicit_fact", "expect_layer": "GRAIN"},
+
+    {"id": "q010", "text": "what is ATP",              "category": "short", "expect_layer": "GRAIN"},
+    {"id": "q011", "text": "define entropy",           "category": "short", "expect_layer": "GRAIN"},
+    {"id": "q012", "text": "what is DNA",              "category": "short", "expect_layer": "GRAIN"},
+    {"id": "q013", "text": "explain photosynthesis",   "category": "short", "expect_layer": "GRAIN"},
+    {"id": "q014", "text": "what is energy",           "category": "short", "expect_layer": "GRAIN"},
+    {"id": "q015", "text": "define acceleration",      "category": "short", "expect_layer": "GRAIN"},
+    {"id": "q016", "text": "what is temperature",      "category": "short", "expect_layer": "GRAIN"},
+    {"id": "q017", "text": "define momentum",          "category": "short", "expect_layer": "GRAIN"},
+    {"id": "q018", "text": "what is mitosis",          "category": "short", "expect_layer": "GRAIN"},
+    {"id": "q019", "text": "explain evolution",        "category": "short", "expect_layer": "GRAIN"},
+
+    {"id": "q030", "text": "how does ATP store energy in cells",          "category": "medium", "expect_layer": "GRAIN"},
+    {"id": "q031", "text": "what role does entropy play in thermodynamics","category": "medium", "expect_layer": "GRAIN"},
+    {"id": "q032", "text": "how does DNA encode genetic information",      "category": "medium", "expect_layer": "GRAIN"},
+    {"id": "q033", "text": "explain the process of natural selection",     "category": "medium", "expect_layer": "GRAIN"},
+    {"id": "q034", "text": "what happens during cellular respiration",     "category": "medium", "expect_layer": "GRAIN"},
+    {"id": "q035", "text": "how do enzymes catalyze chemical reactions",   "category": "medium", "expect_layer": "CARTRIDGE"},
+    {"id": "q036", "text": "what is the relationship between force and mass", "category": "medium", "expect_layer": "GRAIN"},
+    {"id": "q037", "text": "how does temperature affect reaction rates",   "category": "medium", "expect_layer": "CARTRIDGE"},
+    {"id": "q038", "text": "explain how mitochondria produce ATP",         "category": "medium", "expect_layer": "GRAIN"},
+    {"id": "q039", "text": "what determines the speed of a chemical reaction", "category": "medium", "expect_layer": "CARTRIDGE"},
+    {"id": "q040", "text": "how does meiosis differ from mitosis",        "category": "medium", "expect_layer": "GRAIN"},
+    {"id": "q041", "text": "what is the function of ribosomes in cells",  "category": "medium", "expect_layer": "GRAIN"},
+    {"id": "q042", "text": "how do action potentials propagate in neurons","category": "medium", "expect_layer": "CARTRIDGE"},
+    {"id": "q043", "text": "what causes proteins to fold incorrectly",    "category": "medium", "expect_layer": "CARTRIDGE"},
+    {"id": "q044", "text": "how does osmosis regulate cell volume",        "category": "medium", "expect_layer": "GRAIN"},
+
+    {"id": "q060", "text": "explain in detail how the citric acid cycle integrates with oxidative phosphorylation to produce ATP from glucose molecules", "category": "long", "expect_layer": "CARTRIDGE"},
+    {"id": "q061", "text": "describe the molecular mechanisms by which CRISPR-Cas9 achieves sequence-specific DNA cleavage in eukaryotic genomes", "category": "long", "expect_layer": "CARTRIDGE"},
+    {"id": "q062", "text": "what are the thermodynamic principles that govern protein folding and how do chaperone proteins assist in this process", "category": "long", "expect_layer": "CARTRIDGE"},
+    {"id": "q063", "text": "explain the relationship between quantum mechanics and the photoelectric effect and how Einstein explained it", "category": "long", "expect_layer": "CARTRIDGE"},
+    {"id": "q064", "text": "how do allosteric enzymes regulate metabolic pathways through feedback inhibition mechanisms", "category": "long", "expect_layer": "CARTRIDGE"},
+    {"id": "q065", "text": "describe the cascade of events from receptor activation to gene expression changes in signal transduction pathways", "category": "long", "expect_layer": "CARTRIDGE"},
+    {"id": "q066", "text": "what is the current scientific understanding of how consciousness arises from neural activity in the brain", "category": "long", "expect_layer": "ESCALATE"},
+    {"id": "q067", "text": "explain how evolutionary pressures shaped the development of the vertebrate immune system over millions of years", "category": "long", "expect_layer": "CARTRIDGE"},
+    {"id": "q068", "text": "describe the biophysical mechanisms underlying action potential generation and propagation in myelinated axons", "category": "long", "expect_layer": "CARTRIDGE"},
+    {"id": "q069", "text": "how do epigenetic modifications alter gene expression without changing the underlying DNA sequence", "category": "long", "expect_layer": "CARTRIDGE"},
+
+    {"id": "q090", "text": "xyzabc notaword blargflux",     "category": "no_match", "expect_layer": "ESCALATE"},
+    {"id": "q091", "text": "glorbitz snorflax",             "category": "no_match", "expect_layer": "ESCALATE"},
+    {"id": "q092", "text": "the purple elephant dances on tuesdays in the quantum realm", "category": "no_match", "expect_layer": "ESCALATE"},
+    {"id": "q093", "text": "how does the fnorb interact with the blorb field", "category": "no_match", "expect_layer": "ESCALATE"},
+    {"id": "q094", "text": "explain the thermodynamics of invisible dragons", "category": "no_match", "expect_layer": "ESCALATE"}
+  ]
+}
