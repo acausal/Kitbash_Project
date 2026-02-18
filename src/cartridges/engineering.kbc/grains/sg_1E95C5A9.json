@@ -1,0 +1,35 @@
+{
+  "grain_id": "sg_1E95C5A9",
+  "fact_id": 44,
+  "cartridge_source": "engineering",
+  "axiom_link": "domain_concept",
+  "lock_state": "Sicherman_Validated",
+  "weight": 1.58,
+  "delta": {
+    "positive": [],
+    "negative": [],
+    "void": [
+      "inferred:parallel layers"
+    ]
+  },
+  "confidence": 0.95,
+  "cycles_locked": 419,
+  "validation_timestamp": "2026-02-13T14:30:35.174545+00:00",
+  "pointer_map": {
+    "positive_ptrs": {},
+    "negative_ptrs": {},
+    "void_ptrs": {
+      "inferred:parallel layers": {
+        "bit_position": 0,
+        "value": 0
+      }
+    },
+    "access_pattern": {
+      "hit_count": 0,
+      "confidence": 0.95,
+      "first_seen": 12,
+      "last_seen": 431
+    },
+    "total_bits": 1
+  }
+}

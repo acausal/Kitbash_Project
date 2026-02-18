@@ -1,0 +1,631 @@
+{
+  "force": [
+    1,
+    2,
+    40,
+    47,
+    48,
+    29
+  ],
+  "push": [
+    1
+  ],
+  "pull": [
+    1
+  ],
+  "object": [
+    1
+  ],
+  "area": [
+    40,
+    2
+  ],
+  "stress": [
+    2,
+    5,
+    6,
+    9,
+    10
+  ],
+  "per": [
+    32,
+    2,
+    40,
+    41,
+    23,
+    30
+  ],
+  "unit": [
+    32,
+    2,
+    40,
+    41,
+    23,
+    30
+  ],
+  "deformation": [
+    3,
+    13,
+    15
+  ],
+  "original": [
+    3
+  ],
+  "divided": [
+    8,
+    24,
+    3
+  ],
+  "dimension": [
+    3
+  ],
+  "strain": [
+    3
+  ],
+  "material": [
+    4,
+    10,
+    17,
+    20,
+    22
+  ],
+  "modulus": [
+    4
+  ],
+  "young": [
+    4
+  ],
+  "measures": [
+    42,
+    4,
+    22,
+    15
+  ],
+  "stiffness": [
+    4
+  ],
+  "tensile": [
+    5
+  ],
+  "maximum": [
+    5
+  ],
+  "ultimate": [
+    5
+  ],
+  "before": [
+    16,
+    5,
+    14
+  ],
+  "failure": [
+    16,
+    5
+  ],
+  "strength": [
+    12,
+    5
+  ],
+  "surface": [
+    6
+  ],
+  "acts": [
+    6
+  ],
+  "parallel": [
+    44,
+    6
+  ],
+  "shear": [
+    6
+  ],
+  "beams": [
+    7
+  ],
+  "moment": [
+    7
+  ],
+  "bending": [
+    7
+  ],
+  "causes": [
+    7
+  ],
+  "curvature": [
+    7
+  ],
+  "design": [
+    8
+  ],
+  "factor": [
+    8
+  ],
+  "load": [
+    8
+  ],
+  "safety": [
+    8
+  ],
+  "allowable": [
+    8
+  ],
+  "occurs": [
+    9,
+    44,
+    21
+  ],
+  "repeated": [
+    9
+  ],
+  "fatigue": [
+    9
+  ],
+  "cycles": [
+    9
+  ],
+  "compressive": [
+    10
+  ],
+  "together": [
+    10
+  ],
+  "pushes": [
+    10
+  ],
+  "iron": [
+    11
+  ],
+  "alloy": [
+    11
+  ],
+  "steel": [
+    11
+  ],
+  "carbon": [
+    11
+  ],
+  "ratio": [
+    12
+  ],
+  "high": [
+    12
+  ],
+  "weight": [
+    12
+  ],
+  "has": [
+    12
+  ],
+  "aluminum": [
+    12
+  ],
+  "suddenly": [
+    13
+  ],
+  "without": [
+    13
+  ],
+  "brittle": [
+    13
+  ],
+  "materials": [
+    18,
+    13,
+    14
+  ],
+  "fracture": [
+    13
+  ],
+  "plastic": [
+    13
+  ],
+  "deform": [
+    14
+  ],
+  "plastically": [
+    14
+  ],
+  "breaking": [
+    14
+  ],
+  "ductile": [
+    14
+  ],
+  "hardness": [
+    15
+  ],
+  "resistance": [
+    33,
+    42,
+    15
+  ],
+  "ability": [
+    16
+  ],
+  "toughness": [
+    16
+  ],
+  "absorb": [
+    16
+  ],
+  "energy": [
+    36,
+    37,
+    16,
+    23,
+    25,
+    27
+  ],
+  "degradation": [
+    17
+  ],
+  "corrosion": [
+    17
+  ],
+  "chemical": [
+    17
+  ],
+  "composite": [
+    18
+  ],
+  "constituents": [
+    18
+  ],
+  "multiple": [
+    18
+  ],
+  "combine": [
+    18
+  ],
+  "long": [
+    19
+  ],
+  "repeating": [
+    19
+  ],
+  "units": [
+    19
+  ],
+  "chain": [
+    19
+  ],
+  "polymers": [
+    19
+  ],
+  "molecules": [
+    19
+  ],
+  "affects": [
+    20
+  ],
+  "crystalline": [
+    20
+  ],
+  "structure": [
+    20
+  ],
+  "properties": [
+    20
+  ],
+  "convection": [
+    21
+  ],
+  "transfer": [
+    21
+  ],
+  "radiation": [
+    21
+  ],
+  "through": [
+    21,
+    22,
+    47
+  ],
+  "conduction": [
+    21
+  ],
+  "heat": [
+    24,
+    21,
+    22,
+    23
+  ],
+  "thermal": [
+    22
+  ],
+  "flow": [
+    32,
+    33,
+    42,
+    44,
+    45,
+    46,
+    49,
+    22
+  ],
+  "conductivity": [
+    22
+  ],
+  "capacity": [
+    23
+  ],
+  "degree": [
+    23
+  ],
+  "mass": [
+    41,
+    49,
+    23
+  ],
+  "specific": [
+    23
+  ],
+  "work": [
+    24,
+    25,
+    29,
+    30
+  ],
+  "efficiency": [
+    24
+  ],
+  "useful": [
+    24
+  ],
+  "input": [
+    24
+  ],
+  "engine": [
+    24
+  ],
+  "pressure": [
+    40,
+    25,
+    43
+  ],
+  "volume": [
+    25,
+    41
+  ],
+  "plus": [
+    25
+  ],
+  "enthalpy": [
+    25
+  ],
+  "internal": [
+    25
+  ],
+  "processes": [
+    26,
+    28
+  ],
+  "increases": [
+    26
+  ],
+  "irreversible": [
+    26
+  ],
+  "entropy": [
+    26
+  ],
+  "law": [
+    34,
+    27,
+    28
+  ],
+  "first": [
+    27
+  ],
+  "conservation": [
+    27
+  ],
+  "thermodynamics": [
+    27,
+    28
+  ],
+  "direction": [
+    28,
+    29,
+    38
+  ],
+  "second": [
+    28
+  ],
+  "constrains": [
+    28
+  ],
+  "distance": [
+    29
+  ],
+  "times": [
+    34,
+    35,
+    29
+  ],
+  "time": [
+    32,
+    30
+  ],
+  "power": [
+    35,
+    30,
+    39
+  ],
+  "potential": [
+    31
+  ],
+  "electrical": [
+    31
+  ],
+  "difference": [
+    31
+  ],
+  "voltage": [
+    31
+  ],
+  "current": [
+    32,
+    33,
+    38
+  ],
+  "charge": [
+    32
+  ],
+  "opposes": [
+    33,
+    47
+  ],
+  "states": [
+    49,
+    34
+  ],
+  "equals": [
+    34
+  ],
+  "ohm": [
+    34
+  ],
+  "squared": [
+    35
+  ],
+  "dissipation": [
+    35
+  ],
+  "resistor": [
+    35
+  ],
+  "stores": [
+    36,
+    37
+  ],
+  "inductance": [
+    36
+  ],
+  "field": [
+    36,
+    37
+  ],
+  "magnetic": [
+    36
+  ],
+  "capacitance": [
+    37
+  ],
+  "electric": [
+    37
+  ],
+  "alternating": [
+    38,
+    39
+  ],
+  "changes": [
+    38
+  ],
+  "periodically": [
+    38
+  ],
+  "offset": [
+    39
+  ],
+  "phase": [
+    39
+  ],
+  "120": [
+    39
+  ],
+  "currents": [
+    39
+  ],
+  "three": [
+    39
+  ],
+  "degrees": [
+    39
+  ],
+  "uses": [
+    39
+  ],
+  "fluids": [
+    40
+  ],
+  "density": [
+    41
+  ],
+  "viscosity": [
+    42
+  ],
+  "relates": [
+    43
+  ],
+  "velocity": [
+    43
+  ],
+  "principle": [
+    43
+  ],
+  "bernoulli": [
+    43
+  ],
+  "flows": [
+    43
+  ],
+  "laminar": [
+    44
+  ],
+  "smooth": [
+    44
+  ],
+  "layers": [
+    44
+  ],
+  "chaotic": [
+    45
+  ],
+  "turbulent": [
+    45
+  ],
+  "mixing": [
+    45
+  ],
+  "number": [
+    46
+  ],
+  "predicts": [
+    46
+  ],
+  "reynolds": [
+    46
+  ],
+  "regime": [
+    46
+  ],
+  "motion": [
+    47
+  ],
+  "drag": [
+    47
+  ],
+  "fluid": [
+    48,
+    47
+  ],
+  "upward": [
+    48
+  ],
+  "buoyancy": [
+    48
+  ],
+  "displaced": [
+    48
+  ],
+  "equation": [
+    49
+  ],
+  "conserved": [
+    49
+  ],
+  "continuity": [
+    49
+  ]
+}
