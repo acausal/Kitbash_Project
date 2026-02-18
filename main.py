@@ -471,6 +471,8 @@ async def chat_completions(request: ChatCompletionRequest) -> ChatCompletionResp
         raise HTTPException(status_code=400, detail="Messages cannot be empty")
 
     try:
+        logger.info(f"Chat completions request received with {len(request.messages)} messages")
+
         # Extract the user's latest message (last one from 'user' role)
         user_message = None
         for msg in reversed(request.messages):
@@ -481,8 +483,12 @@ async def chat_completions(request: ChatCompletionRequest) -> ChatCompletionResp
         if not user_message:
             raise HTTPException(status_code=400, detail="No user message found in request")
 
+        logger.info(f"Extracted user message: {user_message[:100]}")
+
         # Process through Kitbash orchestrator
         result: QueryResult = _orchestrator.process_query(user_message, {"source": "openai_compat"})
+
+        logger.info(f"Orchestrator returned: query_id={result.query_id}, answer={result.answer[:50] if result.answer else None}, confidence={result.confidence}")
 
         # Build OpenAI-compatible response
         import time as time_module
@@ -506,6 +512,7 @@ async def chat_completions(request: ChatCompletionRequest) -> ChatCompletionResp
             }
         )
 
+        logger.info(f"Returning OpenAI-compatible response")
         return response
 
     except HTTPException:
