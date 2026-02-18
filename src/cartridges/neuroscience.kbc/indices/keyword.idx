@@ -1,0 +1,884 @@
+{
+  "nervous": [
+    1
+  ],
+  "neurons": [
+    1,
+    3,
+    5,
+    6,
+    9,
+    10,
+    51,
+    21,
+    57,
+    29
+  ],
+  "system": [
+    1,
+    12
+  ],
+  "unit": [
+    1
+  ],
+  "basic": [
+    16,
+    1
+  ],
+  "axons": [
+    8,
+    2,
+    19,
+    7
+  ],
+  "cell": [
+    2,
+    18,
+    4
+  ],
+  "signals": [
+    2,
+    3,
+    60,
+    21
+  ],
+  "carry": [
+    2
+  ],
+  "body": [
+    56,
+    2,
+    4,
+    47
+  ],
+  "away": [
+    2
+  ],
+  "dendrites": [
+    3
+  ],
+  "other": [
+    3
+  ],
+  "receive": [
+    3
+  ],
+  "containing": [
+    4
+  ],
+  "nucleus": [
+    4
+  ],
+  "soma": [
+    4
+  ],
+  "between": [
+    21,
+    5
+  ],
+  "junctions": [
+    5
+  ],
+  "synapses": [
+    18,
+    28,
+    5,
+    30
+  ],
+  "support": [
+    6
+  ],
+  "provide": [
+    6
+  ],
+  "cells": [
+    45,
+    6
+  ],
+  "glial": [
+    6
+  ],
+  "insulation": [
+    6
+  ],
+  "conduction": [
+    7
+  ],
+  "speed": [
+    39,
+    7
+  ],
+  "myelin": [
+    8,
+    7
+  ],
+  "increases": [
+    27,
+    39,
+    7
+  ],
+  "insulates": [
+    7
+  ],
+  "sheath": [
+    7
+  ],
+  "nodes": [
+    8
+  ],
+  "gaps": [
+    8
+  ],
+  "along": [
+    8
+  ],
+  "ranvier": [
+    8
+  ],
+  "communicate": [
+    9
+  ],
+  "neurotransmitters": [
+    9,
+    21,
+    28,
+    29,
+    30
+  ],
+  "through": [
+    9
+  ],
+  "contains": [
+    19,
+    10,
+    18,
+    45
+  ],
+  "86": [
+    10
+  ],
+  "approximately": [
+    10
+  ],
+  "billion": [
+    10
+  ],
+  "brain": [
+    10,
+    11,
+    20,
+    56,
+    58,
+    31
+  ],
+  "outer": [
+    11
+  ],
+  "cerebral": [
+    11
+  ],
+  "layer": [
+    11
+  ],
+  "cortex": [
+    41,
+    11,
+    43,
+    46,
+    52,
+    61
+  ],
+  "processes": [
+    41,
+    43,
+    12,
+    46,
+    14
+  ],
+  "emotion": [
+    12,
+    23
+  ],
+  "limbic": [
+    12
+  ],
+  "memory": [
+    34,
+    35,
+    12,
+    13,
+    63
+  ],
+  "formation": [
+    13
+  ],
+  "hippocampus": [
+    13
+  ],
+  "crucial": [
+    13
+  ],
+  "emotional": [
+    14
+  ],
+  "responses": [
+    58,
+    14
+  ],
+  "amygdala": [
+    14
+  ],
+  "cerebellum": [
+    54,
+    15
+  ],
+  "movement": [
+    55,
+    53,
+    15
+  ],
+  "balance": [
+    15
+  ],
+  "coordinates": [
+    15
+  ],
+  "vital": [
+    16
+  ],
+  "functions": [
+    16,
+    63
+  ],
+  "controls": [
+    16
+  ],
+  "brainstem": [
+    16
+  ],
+  "relays": [
+    17
+  ],
+  "sensory": [
+    17,
+    66,
+    49
+  ],
+  "information": [
+    34,
+    35,
+    41,
+    43,
+    17,
+    62
+  ],
+  "thalamus": [
+    17
+  ],
+  "bodies": [
+    18
+  ],
+  "neuron": [
+    18,
+    42
+  ],
+  "gray": [
+    18
+  ],
+  "matter": [
+    18,
+    19
+  ],
+  "myelinated": [
+    19
+  ],
+  "white": [
+    19
+  ],
+  "corpus": [
+    20
+  ],
+  "hemispheres": [
+    20
+  ],
+  "callosum": [
+    20
+  ],
+  "connects": [
+    20
+  ],
+  "molecules": [
+    21
+  ],
+  "transmit": [
+    21
+  ],
+  "dopamine": [
+    22
+  ],
+  "reward": [
+    22
+  ],
+  "involved": [
+    26,
+    61,
+    22
+  ],
+  "motivation": [
+    22
+  ],
+  "serotonin": [
+    23
+  ],
+  "regulates": [
+    23
+  ],
+  "mood": [
+    23
+  ],
+  "neurotransmitter": [
+    24,
+    25
+  ],
+  "inhibitory": [
+    24
+  ],
+  "main": [
+    24,
+    25
+  ],
+  "gaba": [
+    24
+  ],
+  "glutamate": [
+    25
+  ],
+  "excitatory": [
+    25
+  ],
+  "learning": [
+    26,
+    38
+  ],
+  "acetylcholine": [
+    26
+  ],
+  "control": [
+    26,
+    51,
+    54
+  ],
+  "muscle": [
+    59,
+    26,
+    51
+  ],
+  "attention": [
+    27,
+    62
+  ],
+  "norepinephrine": [
+    27
+  ],
+  "arousal": [
+    27
+  ],
+  "synaptic": [
+    32,
+    33,
+    37,
+    40,
+    28
+  ],
+  "vesicles": [
+    28
+  ],
+  "release": [
+    28
+  ],
+  "into": [
+    28
+  ],
+  "bind": [
+    29
+  ],
+  "receptors": [
+    50,
+    29
+  ],
+  "receiving": [
+    29
+  ],
+  "removes": [
+    37,
+    30
+  ],
+  "reuptake": [
+    30
+  ],
+  "connections": [
+    32,
+    33,
+    37,
+    31
+  ],
+  "ability": [
+    64,
+    31
+  ],
+  "neuroplasticity": [
+    31
+  ],
+  "rewire": [
+    31
+  ],
+  "long": [
+    32,
+    33,
+    35,
+    36
+  ],
+  "strengthens": [
+    32,
+    67
+  ],
+  "term": [
+    32,
+    33,
+    35,
+    36
+  ],
+  "potentiation": [
+    32
+  ],
+  "weakens": [
+    33
+  ],
+  "depression": [
+    33
+  ],
+  "working": [
+    34,
+    63
+  ],
+  "temporarily": [
+    34
+  ],
+  "holds": [
+    34
+  ],
+  "stores": [
+    35
+  ],
+  "indefinitely": [
+    35
+  ],
+  "converts": [
+    36
+  ],
+  "short": [
+    36
+  ],
+  "consolidation": [
+    67,
+    36
+  ],
+  "memories": [
+    67,
+    36
+  ],
+  "pruning": [
+    37
+  ],
+  "unused": [
+    37
+  ],
+  "during": [
+    67,
+    37
+  ],
+  "development": [
+    37
+  ],
+  "effective": [
+    38
+  ],
+  "when": [
+    57,
+    38
+  ],
+  "critical": [
+    38
+  ],
+  "times": [
+    38
+  ],
+  "especially": [
+    38
+  ],
+  "periods": [
+    38
+  ],
+  "neural": [
+    70,
+    39
+  ],
+  "processing": [
+    65,
+    66,
+    39
+  ],
+  "myelination": [
+    39
+  ],
+  "dendritic": [
+    40
+  ],
+  "spines": [
+    40
+  ],
+  "contact": [
+    40
+  ],
+  "sites": [
+    40
+  ],
+  "eyes": [
+    41
+  ],
+  "visual": [
+    41
+  ],
+  "responds": [
+    42
+  ],
+  "define": [
+    42
+  ],
+  "fields": [
+    42
+  ],
+  "stimuli": [
+    48,
+    42
+  ],
+  "what": [
+    42
+  ],
+  "receptive": [
+    42
+  ],
+  "auditory": [
+    43
+  ],
+  "sound": [
+    43,
+    45
+  ],
+  "photoreceptors": [
+    44
+  ],
+  "retina": [
+    44
+  ],
+  "light": [
+    44
+  ],
+  "detect": [
+    50,
+    44
+  ],
+  "detection": [
+    45
+  ],
+  "hair": [
+    45
+  ],
+  "cochlea": [
+    45
+  ],
+  "ear": [
+    45
+  ],
+  "pain": [
+    46
+  ],
+  "touch": [
+    46
+  ],
+  "somatosensory": [
+    46
+  ],
+  "proprioception": [
+    47
+  ],
+  "position": [
+    56,
+    47
+  ],
+  "sense": [
+    59,
+    47
+  ],
+  "response": [
+    48
+  ],
+  "reduced": [
+    48
+  ],
+  "constant": [
+    48
+  ],
+  "adaptation": [
+    48
+  ],
+  "causes": [
+    48
+  ],
+  "inhibition": [
+    49,
+    63
+  ],
+  "perception": [
+    49
+  ],
+  "lateral": [
+    49
+  ],
+  "sharpens": [
+    49
+  ],
+  "odors": [
+    50
+  ],
+  "chemical": [
+    50
+  ],
+  "olfactory": [
+    50
+  ],
+  "motor": [
+    51,
+    52,
+    54,
+    55
+  ],
+  "contractions": [
+    51
+  ],
+  "primary": [
+    52
+  ],
+  "sends": [
+    52
+  ],
+  "muscles": [
+    52,
+    60
+  ],
+  "commands": [
+    52
+  ],
+  "ganglia": [
+    53
+  ],
+  "coordinate": [
+    53
+  ],
+  "basal": [
+    53
+  ],
+  "voluntary": [
+    53,
+    55
+  ],
+  "tunes": [
+    54
+  ],
+  "fine": [
+    54
+  ],
+  "planning": [
+    61,
+    55
+  ],
+  "precedes": [
+    55
+  ],
+  "proprioceptive": [
+    56
+  ],
+  "about": [
+    56
+  ],
+  "feedback": [
+    56
+  ],
+  "informs": [
+    56
+  ],
+  "observing": [
+    57
+  ],
+  "fire": [
+    57
+  ],
+  "action": [
+    57
+  ],
+  "mirror": [
+    57
+  ],
+  "both": [
+    57
+  ],
+  "acting": [
+    57
+  ],
+  "rapid": [
+    58
+  ],
+  "spinal": [
+    58
+  ],
+  "reflexes": [
+    58
+  ],
+  "bypass": [
+    58
+  ],
+  "stretch": [
+    59
+  ],
+  "spindles": [
+    59
+  ],
+  "transmits": [
+    60
+  ],
+  "neuromuscular": [
+    60
+  ],
+  "junction": [
+    60
+  ],
+  "decision": [
+    61
+  ],
+  "making": [
+    61
+  ],
+  "prefrontal": [
+    61
+  ],
+  "amplifies": [
+    62
+  ],
+  "selectively": [
+    62
+  ],
+  "relevant": [
+    62
+  ],
+  "executive": [
+    63
+  ],
+  "include": [
+    63
+  ],
+  "theory": [
+    64
+  ],
+  "others": [
+    64
+  ],
+  "mental": [
+    64
+  ],
+  "states": [
+    64
+  ],
+  "mind": [
+    64
+  ],
+  "model": [
+    64
+  ],
+  "language": [
+    65
+  ],
+  "wernicke": [
+    65
+  ],
+  "involves": [
+    65
+  ],
+  "areas": [
+    65
+  ],
+  "broca": [
+    65
+  ],
+  "top": [
+    66
+  ],
+  "expectation": [
+    66
+  ],
+  "uses": [
+    66
+  ],
+  "input": [
+    66
+  ],
+  "down": [
+    66
+  ],
+  "interpret": [
+    66
+  ],
+  "sleep": [
+    67,
+    68,
+    69
+  ],
+  "dreaming": [
+    68
+  ],
+  "associated": [
+    68
+  ],
+  "rem": [
+    68
+  ],
+  "wake": [
+    69
+  ],
+  "regulate": [
+    69
+  ],
+  "circadian": [
+    69
+  ],
+  "rhythms": [
+    69
+  ],
+  "cycles": [
+    69
+  ],
+  "consciousness": [
+    70
+  ],
+  "remain": [
+    70
+  ],
+  "correlates": [
+    70
+  ],
+  "partially": [
+    70
+  ],
+  "understood": [
+    70
+  ]
+}

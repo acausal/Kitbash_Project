@@ -1,0 +1,35 @@
+{
+  "grain_id": "sg_C2BFC55F",
+  "fact_id": 48,
+  "cartridge_source": "neuroscience",
+  "axiom_link": "domain_concept",
+  "lock_state": "Sicherman_Validated",
+  "weight": 1.58,
+  "delta": {
+    "positive": [
+      "inferred:causes reduced response to con"
+    ],
+    "negative": [],
+    "void": []
+  },
+  "confidence": 0.9161904761904762,
+  "cycles_locked": 445,
+  "validation_timestamp": "2026-02-13T14:30:35.939597+00:00",
+  "pointer_map": {
+    "positive_ptrs": {
+      "inferred:causes reduced response to con": {
+        "bit_position": 0,
+        "value": 1
+      }
+    },
+    "negative_ptrs": {},
+    "void_ptrs": {},
+    "access_pattern": {
+      "hit_count": 0,
+      "confidence": 0.9161904761904762,
+      "first_seen": 4,
+      "last_seen": 449
+    },
+    "total_bits": 1
+  }
+}
