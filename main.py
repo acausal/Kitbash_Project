@@ -11,9 +11,9 @@ Endpoints:
   GET    /info              - Service information & stats
 
 Usage:
-  uvicorn main:app --host 0.0.0.0 --port 8000
+  uvicorn main:app --host 0.0.0.0 --port 8001
   or
-  python main.py (runs on localhost:8000)
+  python main.py (runs on localhost:8001)
 """
 
 import sys
@@ -414,6 +414,6 @@ if __name__ == "__main__":
     uvicorn.run(
         app,
         host="0.0.0.0",
-        port=8000,
+        port=8001,
         log_level="info",
     )
