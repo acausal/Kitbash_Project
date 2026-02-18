@@ -1,0 +1,28 @@
+{
+  "grain_id": "sg_0406255F",
+  "fact_id": 45,
+  "cartridge_source": "neuroscience",
+  "axiom_link": "domain_concept",
+  "lock_state": "Sicherman_Validated",
+  "weight": 0.0,
+  "delta": {
+    "positive": [],
+    "negative": [],
+    "void": []
+  },
+  "confidence": 0.94,
+  "cycles_locked": 444,
+  "validation_timestamp": "2026-02-13T14:30:35.935094+00:00",
+  "pointer_map": {
+    "positive_ptrs": {},
+    "negative_ptrs": {},
+    "void_ptrs": {},
+    "access_pattern": {
+      "hit_count": 0,
+      "confidence": 0.94,
+      "first_seen": 1,
+      "last_seen": 445
+    },
+    "total_bits": 0
+  }
+}

@@ -1,0 +1,42 @@
+{
+  "grain_id": "sg_307FB09D",
+  "fact_id": 10,
+  "cartridge_source": "statistics",
+  "axiom_link": "domain_concept",
+  "lock_state": "Sicherman_Validated",
+  "weight": 3.17,
+  "delta": {
+    "positive": [],
+    "negative": [
+      "inferred:not affect the probability of "
+    ],
+    "void": [
+      "inferred:Independent events are events "
+    ]
+  },
+  "confidence": 0.9399681020733652,
+  "cycles_locked": 449,
+  "validation_timestamp": "2026-02-13T14:30:36.571908+00:00",
+  "pointer_map": {
+    "positive_ptrs": {},
+    "negative_ptrs": {
+      "inferred:not affect the probability of ": {
+        "bit_position": 0,
+        "value": -1
+      }
+    },
+    "void_ptrs": {
+      "inferred:Independent events are events ": {
+        "bit_position": 1,
+        "value": 0
+      }
+    },
+    "access_pattern": {
+      "hit_count": 0,
+      "confidence": 0.9399681020733652,
+      "first_seen": 0,
+      "last_seen": 449
+    },
+    "total_bits": 2
+  }
+}

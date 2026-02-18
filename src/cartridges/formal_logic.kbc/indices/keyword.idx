@@ -1,0 +1,464 @@
+{
+  "either": [
+    1
+  ],
+  "proposition": [
+    19,
+    1,
+    3,
+    20
+  ],
+  "declarative": [
+    1
+  ],
+  "both": [
+    1,
+    4,
+    7
+  ],
+  "not": [
+    1,
+    18,
+    3
+  ],
+  "true": [
+    1,
+    3,
+    4,
+    5,
+    6,
+    7,
+    12,
+    13,
+    19
+  ],
+  "statement": [
+    1
+  ],
+  "false": [
+    1,
+    3,
+    6,
+    12,
+    20
+  ],
+  "statements": [
+    2
+  ],
+  "used": [
+    2
+  ],
+  "propositions": [
+    2,
+    4,
+    5,
+    7,
+    21
+  ],
+  "operators": [
+    2
+  ],
+  "connectives": [
+    2
+  ],
+  "complex": [
+    2
+  ],
+  "into": [
+    2
+  ],
+  "logical": [
+    9,
+    2,
+    21,
+    17
+  ],
+  "combine": [
+    2
+  ],
+  "reverses": [
+    3
+  ],
+  "if": [
+    3,
+    4,
+    5,
+    6,
+    7,
+    10,
+    11,
+    12,
+    23,
+    24,
+    25
+  ],
+  "truth": [
+    3,
+    7,
+    19,
+    20,
+    21
+  ],
+  "value": [
+    3,
+    21,
+    7
+  ],
+  "negation": [
+    3
+  ],
+  "conjunction": [
+    4
+  ],
+  "only": [
+    4,
+    6,
+    7
+  ],
+  "one": [
+    16,
+    26,
+    5
+  ],
+  "least": [
+    16,
+    5
+  ],
+  "disjunction": [
+    5
+  ],
+  "material": [
+    6
+  ],
+  "consequent": [
+    24,
+    6
+  ],
+  "then": [
+    10,
+    11,
+    6
+  ],
+  "antecedent": [
+    25,
+    6
+  ],
+  "implication": [
+    6
+  ],
+  "same": [
+    21,
+    7
+  ],
+  "biconditional": [
+    7
+  ],
+  "have": [
+    21,
+    7
+  ],
+  "form": [
+    8,
+    10,
+    11
+  ],
+  "deduction": [
+    8
+  ],
+  "follows": [
+    8
+  ],
+  "premises": [
+    8,
+    9,
+    12,
+    13,
+    26
+  ],
+  "where": [
+    8
+  ],
+  "conclusion": [
+    8,
+    9,
+    12,
+    23,
+    26
+  ],
+  "reasoning": [
+    8
+  ],
+  "necessarily": [
+    8
+  ],
+  "argument": [
+    9,
+    10,
+    11,
+    12,
+    13,
+    23
+  ],
+  "consisting": [
+    9
+  ],
+  "syllogism": [
+    9
+  ],
+  "two": [
+    9,
+    21
+  ],
+  "ponens": [
+    10
+  ],
+  "valid": [
+    10,
+    11,
+    12,
+    13
+  ],
+  "modus": [
+    10,
+    11
+  ],
+  "tollens": [
+    11
+  ],
+  "validity": [
+    12
+  ],
+  "refers": [
+    12
+  ],
+  "structure": [
+    12
+  ],
+  "impossible": [
+    12
+  ],
+  "actually": [
+    13
+  ],
+  "soundness": [
+    13
+  ],
+  "occurs": [
+    26,
+    13
+  ],
+  "all": [
+    17,
+    21,
+    13,
+    15
+  ],
+  "when": [
+    21,
+    26,
+    13
+  ],
+  "its": [
+    19,
+    20,
+    13,
+    23
+  ],
+  "quantifiers": [
+    14
+  ],
+  "extends": [
+    14
+  ],
+  "using": [
+    14
+  ],
+  "describe": [
+    14
+  ],
+  "properties": [
+    14
+  ],
+  "logic": [
+    14
+  ],
+  "objects": [
+    17,
+    14
+  ],
+  "predicate": [
+    14
+  ],
+  "propositional": [
+    14
+  ],
+  "variables": [
+    18,
+    14
+  ],
+  "universal": [
+    15
+  ],
+  "property": [
+    16,
+    15
+  ],
+  "indicates": [
+    16,
+    15
+  ],
+  "members": [
+    15
+  ],
+  "quantifier": [
+    16,
+    18,
+    15
+  ],
+  "domain": [
+    16,
+    17,
+    15
+  ],
+  "holds": [
+    16,
+    21,
+    15
+  ],
+  "member": [
+    16
+  ],
+  "existential": [
+    16
+  ],
+  "set": [
+    17
+  ],
+  "discourse": [
+    17
+  ],
+  "context": [
+    17
+  ],
+  "consideration": [
+    17
+  ],
+  "under": [
+    17
+  ],
+  "particular": [
+    17
+  ],
+  "scope": [
+    18
+  ],
+  "bound": [
+    18
+  ],
+  "within": [
+    18
+  ],
+  "free": [
+    18
+  ],
+  "tautology": [
+    19
+  ],
+  "component": [
+    19
+  ],
+  "parts": [
+    19
+  ],
+  "values": [
+    19,
+    20
+  ],
+  "regardless": [
+    19,
+    20
+  ],
+  "always": [
+    19,
+    20
+  ],
+  "contradiction": [
+    20
+  ],
+  "components": [
+    20
+  ],
+  "equivalence": [
+    21
+  ],
+  "cases": [
+    21
+  ],
+  "possible": [
+    21
+  ],
+  "state": [
+    22
+  ],
+  "de": [
+    22
+  ],
+  "laws": [
+    22
+  ],
+  "morgan": [
+    22
+  ],
+  "convincing": [
+    23
+  ],
+  "appears": [
+    23
+  ],
+  "defective": [
+    23
+  ],
+  "even": [
+    23
+  ],
+  "establish": [
+    23
+  ],
+  "fails": [
+    23
+  ],
+  "fallacy": [
+    24,
+    25,
+    23
+  ],
+  "conclude": [
+    24,
+    25
+  ],
+  "affirming": [
+    24
+  ],
+  "invalid": [
+    24,
+    25
+  ],
+  "denying": [
+    25
+  ],
+  "assumed": [
+    26
+  ],
+  "question": [
+    26
+  ],
+  "simply": [
+    26
+  ],
+  "as": [
+    26
+  ],
+  "begging": [
+    26
+  ]
+}

@@ -1,0 +1,28 @@
+{
+  "grain_id": "sg_B868BDD0",
+  "fact_id": 18,
+  "cartridge_source": "physics",
+  "axiom_link": "domain_concept",
+  "lock_state": "Sicherman_Validated",
+  "weight": 0.0,
+  "delta": {
+    "positive": [],
+    "negative": [],
+    "void": []
+  },
+  "confidence": 0.9322926829268292,
+  "cycles_locked": 449,
+  "validation_timestamp": "2026-02-13T14:30:36.355499+00:00",
+  "pointer_map": {
+    "positive_ptrs": {},
+    "negative_ptrs": {},
+    "void_ptrs": {},
+    "access_pattern": {
+      "hit_count": 0,
+      "confidence": 0.9322926829268292,
+      "first_seen": 0,
+      "last_seen": 449
+    },
+    "total_bits": 0
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "grain_id": "sg_6EAB37CA",
+  "fact_id": 11,
+  "cartridge_source": "physics",
+  "axiom_link": "domain_concept",
+  "lock_state": "Sicherman_Validated",
+  "weight": 1.58,
+  "delta": {
+    "positive": [],
+    "negative": [],
+    "void": [
+      "inferred:parallel layers of fluid; turb"
+    ]
+  },
+  "confidence": 0.9423673469387756,
+  "cycles_locked": 447,
+  "validation_timestamp": "2026-02-13T14:30:36.356649+00:00",
+  "pointer_map": {
+    "positive_ptrs": {},
+    "negative_ptrs": {},
+    "void_ptrs": {
+      "inferred:parallel layers of fluid; turb": {
+        "bit_position": 0,
+        "value": 0
+      }
+    },
+    "access_pattern": {
+      "hit_count": 0,
+      "confidence": 0.9423673469387756,
+      "first_seen": 0,
+      "last_seen": 447
+    },
+    "total_bits": 1
+  }
+}
