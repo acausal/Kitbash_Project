@@ -535,6 +535,20 @@ async def list_models() -> ModelsResponse:
         raise HTTPException(status_code=500, detail=f"Models request failed: {str(e)}")
 
 
+# --- Route aliases without /v1 prefix (for SillyTavern compatibility) ---
+
+@app.post("/chat/completions", response_model=ChatCompletionResponse)
+async def chat_completions_no_v1(request: ChatCompletionRequest) -> ChatCompletionResponse:
+    """Alias for /v1/chat/completions (SillyTavern compatibility)."""
+    return await chat_completions(request)
+
+
+@app.get("/models", response_model=ModelsResponse)
+async def list_models_no_v1() -> ModelsResponse:
+    """Alias for /v1/models (SillyTavern compatibility)."""
+    return await list_models()
+
+
 if __name__ == "__main__":
     import uvicorn
 
