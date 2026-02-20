@@ -72,6 +72,34 @@ class MambaContext:
     topic_shifts: List[str] = field(default_factory=list)
     hidden_state: Optional[bytes] = None
 
+# Stub classes for metabolism services
+class HeartbeatService:
+    """Stub for kitbash.metabolism.heartbeat_service.HeartbeatService"""
+    def __init__(self, initial_turn: int = 0):
+        self._turn_number = initial_turn
+        self._is_running = True
+    
+    @property
+    def turn_number(self) -> int:
+        return self._turn_number
+    
+    def pause(self):
+        self._is_running = False
+    
+    def resume(self):
+        self._is_running = True
+    
+    def advance_turn(self):
+        self._turn_number += 1
+
+class MetabolismScheduler:
+    """Stub for kitbash.metabolism.metabolism_scheduler.MetabolismScheduler"""
+    def __init__(self):
+        pass
+    
+    def schedule_background_work(self, *args, **kwargs):
+        pass
+
 # ---- Patch kitbash namespace so orchestrator imports resolve ---------------
 import sys
 import types
@@ -90,6 +118,9 @@ for mod_name in [
     "kitbash.interfaces.mamba_context_service",
     "kitbash.memory",
     "kitbash.memory.resonance_weights",
+    "kitbash.metabolism",
+    "kitbash.metabolism.heartbeat_service",
+    "kitbash.metabolism.metabolism_scheduler",
 ]:
     if mod_name not in sys.modules:
         _make_module(mod_name)
@@ -104,9 +135,14 @@ sys.modules["kitbash.interfaces.inference_engine"].InferenceResponse = Inference
 sys.modules["kitbash.interfaces.mamba_context_service"].MambaContextService = object
 sys.modules["kitbash.interfaces.mamba_context_service"].MambaContextRequest = MambaContextRequest
 
+# Inject stubs for metabolism services
+sys.modules["kitbash.metabolism.heartbeat_service"].HeartbeatService = HeartbeatService
+sys.modules["kitbash.metabolism.metabolism_scheduler"].MetabolismScheduler = MetabolismScheduler
+
 # Inject real ResonanceWeightService
 import importlib.util, os
-rws_path = os.path.join(os.path.dirname(__file__), "resonance_weights.py")
+# resonance_weights.py is in src/memory/, not src/tests/
+rws_path = os.path.join(os.path.dirname(__file__), "..", "memory", "resonance_weights.py")
 spec = importlib.util.spec_from_file_location("kitbash.memory.resonance_weights", rws_path)
 rws_mod = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(rws_mod)
@@ -114,8 +150,9 @@ sys.modules["kitbash.memory.resonance_weights"] = rws_mod
 ResonanceWeightService = rws_mod.ResonanceWeightService
 
 # Now import the orchestrator (all its imports will resolve via stubs above)
+# query_orchestrator.py is in src/orchestration/, not src/tests/
 import importlib.util
-orch_path = os.path.join(os.path.dirname(__file__), "query_orchestrator.py")
+orch_path = os.path.join(os.path.dirname(__file__), "..", "orchestration", "query_orchestrator.py")
 spec2 = importlib.util.spec_from_file_location("query_orchestrator", orch_path)
 orch_mod = importlib.util.module_from_spec(spec2)
 spec2.loader.exec_module(orch_mod)
