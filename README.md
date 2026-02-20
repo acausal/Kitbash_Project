@@ -1,7 +1,7 @@
 # Kitbash: Externalizing LLM Context for Improved Coherence and Auditability
 
 **Status:** MVP Phase 3B/3C (Proof of Concept)  
-**License:** TBD  
+**License:** MIT  
 **Python:** 3.10+
 
 ---
