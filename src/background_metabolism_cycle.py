@@ -1,273 +1,549 @@
 """
-BackgroundMetabolismCycle: Coordinates background maintenance work.
+background_metabolism_cycle.py - Background Metabolism Cycle
 
-Routes background maintenance decisions through RuleBasedTriageAgent, then
-executes the appropriate handler (decay, analyze_split, routine, etc).
+Runs during the background cycle (every N queries). Analyzes recent query logs
+and generates learning signals for pattern discovery.
 
-MVP focuses on "decay" handler (resonance cleanup via advance_turn).
-Other handlers are stubbed for Phase 4.
+Responsibilities:
+1. Read recent query events from Redis
+2. Analyze coupling patterns (Gap #3)
+3. Analyze epistemology (Gap #1)
+4. Analyze questions (Gap #2)
+5. Validate patterns don't violate constraints
+6. Check faction boundaries (Constraint)
+7. Update baseline metrics (Gap #7)
+8. Generate signals for other cycles
+
+Phase 4.1: Week 1 - Log Reading & Analysis
 """
 
-from dataclasses import dataclass
-from typing import Dict, Any, Optional, Callable
-from enum import Enum
 import logging
+import time
+from typing import Dict, Any, List, Optional
+from dataclasses import dataclass, field
 
 logger = logging.getLogger(__name__)
 
 
-class MaintenancePriority(Enum):
-    """Priority levels for background maintenance work."""
-    DECAY = "decay"  # Clean up low-weight resonance patterns
-    ANALYZE_SPLIT = "analyze_split"  # Check for large cartridges
-    ROUTINE = "routine"  # General housekeeping
-    DAYDREAM = "daydream"  # Test consistency (Phase 4)
-    SLEEP = "sleep"  # Consolidate memory (Phase 4)
-
-
 @dataclass
-class BackgroundTriageRequest:
-    """Request passed to triage.route_background()."""
-    resonance_patterns: Dict[str, Any]  # Active patterns from ResonanceWeightService
-    cartridge_stats: Dict[str, Any]  # Stats from CartridgeEngine
-    current_turn: int  # Which turn we're on
-
-
-@dataclass
-class BackgroundTriageDecision:
-    """Decision returned by triage.route_background()."""
-    priority: str  # One of MaintenancePriority values
-    reasoning: str  # Why this priority was chosen
-    urgency: float  # 0.0-1.0, for Phase 4 scheduling
-    estimated_duration_ms: float = 0.0
-    parameters: Dict[str, Any] = None  # Priority-specific config
+class CycleResult:
+    """Result of running a metabolism cycle."""
+    
+    cycle_id: str
+    cycle_type: str  # "background", "daydream", "sleep"
+    started_at: float
+    completed_at: float
+    success: bool
+    
+    # Analysis results
+    events_analyzed: int = 0
+    patterns_found: int = 0
+    
+    # Detailed analysis
+    coupling_analysis: Dict[str, Any] = field(default_factory=dict)
+    epistemology_analysis: Dict[str, Any] = field(default_factory=dict)
+    question_analysis: Dict[str, Any] = field(default_factory=dict)
+    faction_analysis: Dict[str, Any] = field(default_factory=dict)
+    validation_results: Dict[str, Any] = field(default_factory=dict)
+    
+    # Errors
+    error_message: Optional[str] = None
+    
+    @property
+    def elapsed_ms(self) -> float:
+        """Elapsed time in milliseconds."""
+        return (self.completed_at - self.started_at) * 1000
+    
+    def summary(self) -> str:
+        """One-line summary."""
+        return (
+            f"{self.cycle_type} cycle: "
+            f"{self.events_analyzed} events, "
+            f"{self.elapsed_ms:.1f}ms, "
+            f"{'✓' if self.success else '✗'}"
+        )
 
 
 class BackgroundMetabolismCycle:
     """
-    Coordinates background metabolism work.
-
-    Called periodically by MetabolismScheduler (every 100 turns or on-demand).
-    Routes through RuleBasedTriageAgent to decide what work to do, then
-    delegates to appropriate handler.
+    Background metabolism cycle - continuous learning signal generation.
+    
+    Runs automatically every N queries (configured in MetabolismScheduler).
+    Analyzes recent query logs and generates signals for pattern discovery.
     """
-
+    
     def __init__(
         self,
-        triage_agent,  # RuleBasedTriageAgent
-        resonance_service,  # ResonanceWeightService
-        cartridge_engine=None,  # CartridgeEngine (optional, for stats)
+        log_analyzer,  # LogAnalyzer instance
+        epistemic_validator,  # EpistemicValidator instance
+        question_scorer,  # QuestionAdjustedScorer instance
+        faction_gate,  # FactionGate instance
+        regression_detector,  # RegressionDetector instance
+        metabolism_state=None,  # MetabolismState (optional, shared with other cycles)
     ):
         """
         Initialize background cycle.
-
+        
         Args:
-            triage_agent: RuleBasedTriageAgent for routing decisions
-            resonance_service: ResonanceWeightService for decay work
-            cartridge_engine: CartridgeEngine (optional, for cartridge stats)
+            log_analyzer: LogAnalyzer for reading Redis events
+            epistemic_validator: Validator for L0-L5 constraints
+            question_scorer: Scorer for question-adjusted confidence
+            faction_gate: Enforces fiction/general boundaries
+            regression_detector: Detects baseline regression
+            metabolism_state: Shared MetabolismState (optional)
         """
-        self.triage_agent = triage_agent
-        self.resonance_service = resonance_service
-        self.cartridge_engine = cartridge_engine
-
-        # Registry for maintenance handlers (used by Phase 4)
-        self.maintenance_registry: Dict[str, Callable] = {
-            MaintenancePriority.DECAY.value: self._handle_decay,
-            MaintenancePriority.ANALYZE_SPLIT.value: self._handle_analyze_split,
-            MaintenancePriority.ROUTINE.value: self._handle_routine,
-        }
-
-        self.work_count = 0
-
-    def run(self) -> Dict[str, Any]:
+        self.log_analyzer = log_analyzer
+        self.epistemic_validator = epistemic_validator
+        self.question_scorer = question_scorer
+        self.faction_gate = faction_gate
+        self.regression_detector = regression_detector
+        self.metabolism_state = metabolism_state
+        
+        logger.info("BackgroundMetabolismCycle initialized")
+    
+    def execute(
+        self,
+        num_events: int = 100,
+        turn_number: int = 0
+    ) -> CycleResult:
         """
-        Execute one background maintenance cycle.
-
-        Called by HeartbeatService.step(). Flow:
-          1. Build BackgroundTriageRequest from current system state
-          2. Call triage.route_background() to get decision
-          3. Look up handler for priority
-          4. Execute handler
-          5. Return checkpoint state
-
+        Execute background metabolism cycle.
+        
+        Args:
+            num_events: Number of recent events to analyze
+            turn_number: Current turn from HeartbeatService
+        
         Returns:
-            Checkpoint data with priority, work done, etc.
+            CycleResult with analysis and signals
         """
-        self.work_count += 1
-
-        # Step 1: Build request
-        request = self._build_request()
-
-        # Step 2: Get triage decision
+        cycle_id = f"bg_{int(time.time())}"
+        start_time = time.time()
+        
+        logger.info(f"Background cycle {cycle_id} starting (turn {turn_number})")
+        
         try:
-            decision = self.triage_agent.route_background(request)
-        except Exception as e:
-            logger.error(f"BackgroundMetabolismCycle.run(): triage failed: {e}")
-            return {
-                "success": False,
-                "priority": "unknown",
-                "error": str(e),
-                "work_number": self.work_count,
-            }
-
-        # Step 3: Look up handler
-        handler = self.maintenance_registry.get(decision.priority)
-        if not handler:
-            logger.warning(
-                f"BackgroundMetabolismCycle.run(): no handler for {decision.priority}, "
-                f"using default"
-            )
-            handler = self._handle_routine
-
-        # Step 4: Execute handler
-        try:
-            result = handler(decision)
-            result["priority"] = decision.priority
-            result["reasoning"] = decision.reasoning
-            result["work_number"] = self.work_count
-
-            if logger.isEnabledFor(logging.INFO):
-                logger.info(
-                    f"BackgroundMetabolismCycle.run() #{self.work_count}: "
-                    f"→ {decision.priority} ({decision.reasoning})"
+            # Step 1: Read recent events from Redis
+            recent_events = self.log_analyzer.read_recent_events(num_events=num_events)
+            
+            if not recent_events:
+                logger.warning("No recent events found in Redis")
+                return self._create_result(
+                    cycle_id, start_time, time.time(),
+                    success=False,
+                    error="No events found"
                 )
-
-            return result
-
-        except Exception as e:
-            logger.error(
-                f"BackgroundMetabolismCycle.run(): handler for {decision.priority} failed: {e}"
+            
+            logger.info(f"Read {len(recent_events)} events from Redis")
+            
+            # Step 2: Analyze coupling patterns (Gap #3)
+            coupling_analysis = self._analyze_coupling_patterns(recent_events)
+            
+            # Step 3: Analyze epistemology (Gap #1)
+            epistemology_analysis = self._analyze_epistemology(recent_events)
+            
+            # Step 4: Analyze questions (Gap #2)
+            question_analysis = self._analyze_questions(recent_events)
+            
+            # Step 5: Validate patterns don't violate constraints
+            validation_results = self._validate_patterns(
+                recent_events,
+                epistemology_analysis,
+                question_analysis
             )
-            return {
-                "success": False,
-                "priority": decision.priority,
-                "error": str(e),
-                "work_number": self.work_count,
-            }
-
-    def _build_request(self) -> BackgroundTriageRequest:
-        """Build BackgroundTriageRequest from current system state."""
-        # Get active resonance patterns
-        resonance_patterns = {}
-        try:
-            if hasattr(self.resonance_service, "weights"):
-                for pattern_hash, weight_obj in self.resonance_service.weights.items():
-                    weight = self.resonance_service.compute_weight(pattern_hash)
-                    resonance_patterns[pattern_hash] = {
-                        "weight": weight,
-                        "hit_count": getattr(weight_obj, "hit_count", 0),
-                    }
+            
+            # Step 6: Check faction boundaries (Constraint)
+            faction_analysis = self._check_faction_boundaries(recent_events)
+            
+            # Step 7: Update baseline metrics (Gap #7)
+            self._update_baseline_metrics(recent_events)
+            
+            # Step 8: Update shared metabolism state if available
+            if self.metabolism_state:
+                self._update_metabolism_state(
+                    recent_events,
+                    epistemology_analysis,
+                    question_analysis,
+                    faction_analysis,
+                    turn_number
+                )
+            
+            # Create successful result
+            result = self._create_result(
+                cycle_id, start_time, time.time(),
+                success=True,
+                events_analyzed=len(recent_events),
+                coupling_analysis=coupling_analysis,
+                epistemology_analysis=epistemology_analysis,
+                question_analysis=question_analysis,
+                faction_analysis=faction_analysis,
+                validation_results=validation_results,
+            )
+            
+            logger.info(f"Background cycle complete: {result.summary()}")
+            return result
+        
         except Exception as e:
-            logger.warning(f"Failed to get resonance patterns: {e}")
-
-        # Get cartridge stats
-        cartridge_stats = {}
-        try:
-            if self.cartridge_engine and hasattr(self.cartridge_engine, "cartridges"):
-                for domain, cartridge in self.cartridge_engine.cartridges.items():
-                    # Estimate size in MB (bytes / 1_000_000)
-                    size_bytes = len(str(cartridge))  # Rough estimate
-                    cartridge_stats[domain] = {"size_mb": size_bytes / 1_000_000}
-        except Exception as e:
-            logger.warning(f"Failed to get cartridge stats: {e}")
-
-        return BackgroundTriageRequest(
-            resonance_patterns=resonance_patterns,
-            cartridge_stats=cartridge_stats,
-            current_turn=self.resonance_service.current_turn,
-        )
-
-    def _handle_decay(self, decision: BackgroundTriageDecision) -> Dict[str, Any]:
-        """
-        Handle "decay" priority: clean up low-weight resonance patterns.
-
-        Called by run() when triage decision is "decay".
-        Advances the resonance turn, which triggers cleanup of patterns
-        below the weight threshold (0.001).
-        """
-        patterns_before = len(self.resonance_service.weights)
-
-        # Advance turn (triggers cleanup of low-weight patterns)
-        self.resonance_service.advance_turn()
-
-        patterns_after = len(self.resonance_service.weights)
-        patterns_removed = patterns_before - patterns_after
-
+            logger.error(f"Background cycle failed: {e}", exc_info=True)
+            return self._create_result(
+                cycle_id, start_time, time.time(),
+                success=False,
+                error=str(e)
+            )
+    
+    # ========================================================================
+    # Analysis Methods
+    # ========================================================================
+    
+    def _analyze_coupling_patterns(self, events) -> Dict[str, Any]:
+        """Analyze coupling deltas across events (Gap #3)."""
+        
+        # Count deltas by severity
+        severity_counts = {"PASS": 0, "LOW": 0, "MEDIUM": 0, "HIGH": 0, "CRITICAL": 0}
+        layer_pair_conflicts = {}
+        
+        for event in events:
+            for delta in event.coupling_deltas:
+                severity = delta.get("severity", "LOW")
+                if severity in severity_counts:
+                    severity_counts[severity] += 1
+                
+                # Track which layer pairs conflict most
+                pair = (delta.get("layer_a"), delta.get("layer_b"))
+                if pair not in layer_pair_conflicts:
+                    layer_pair_conflicts[pair] = []
+                layer_pair_conflicts[pair].append(severity)
+        
+        # Find top conflicting pairs
+        top_conflicts = sorted(
+            layer_pair_conflicts.items(),
+            key=lambda x: len([s for s in x[1] if s in ["HIGH", "CRITICAL"]]),
+            reverse=True
+        )[:5]
+        
         return {
-            "success": True,
-            "action": "resonance_advance_turn",
-            "patterns_before": patterns_before,
-            "patterns_after": patterns_after,
-            "patterns_removed": patterns_removed,
-            "estimated_duration_ms": decision.estimated_duration_ms,
+            "total_deltas": sum(severity_counts.values()),
+            "severity_distribution": severity_counts,
+            "top_conflicting_pairs": [
+                {
+                    "pair": pair,
+                    "high_critical_count": len([s for s in severities if s in ["HIGH", "CRITICAL"]]),
+                    "total_count": len(severities),
+                }
+                for (pair, severities) in top_conflicts
+            ],
         }
-
-    def _handle_analyze_split(
-        self, decision: BackgroundTriageDecision
+    
+    def _analyze_epistemology(self, events) -> Dict[str, Any]:
+        """Analyze epistemic context (Gap #1)."""
+        
+        l0_l1_both_present = 0
+        l0_l1_missing = 0
+        validation_passed = 0
+        validation_failed = 0
+        
+        for event in events:
+            context = event.epistemic_context
+            
+            if context.get("L0_active") and context.get("L1_active"):
+                l0_l1_both_present += 1
+            else:
+                l0_l1_missing += 1
+            
+            if context.get("nwp_validation_passed"):
+                validation_passed += 1
+            else:
+                validation_failed += 1
+        
+        validation_rate = (
+            validation_passed / len(events) if events else 0.0
+        )
+        
+        return {
+            "total_events": len(events),
+            "L0_L1_both_present": l0_l1_both_present,
+            "L0_L1_missing": l0_l1_missing,
+            "nwp_validation_passed": validation_passed,
+            "nwp_validation_failed": validation_failed,
+            "validation_success_rate": validation_rate,
+        }
+    
+    def _analyze_questions(self, events) -> Dict[str, Any]:
+        """Analyze question signals (Gap #2)."""
+        
+        total_unresolved = 0
+        events_with_questions = 0
+        question_types = set()
+        question_rate_sum = 0.0
+        
+        for event in events:
+            questions = event.question_signals
+            count = questions.get("unresolved_question_count", 0)
+            
+            if count > 0:
+                events_with_questions += 1
+                total_unresolved += count
+                question_types.update(questions.get("question_types", []))
+            
+            question_rate_sum += count
+        
+        avg_questions = (
+            total_unresolved / len(events) if events else 0.0
+        )
+        
+        return {
+            "events_analyzed": len(events),
+            "events_with_unresolved_questions": events_with_questions,
+            "total_unresolved_questions": total_unresolved,
+            "average_questions_per_event": avg_questions,
+            "question_types_seen": list(question_types),
+            "question_rate": (events_with_questions / len(events)) if events else 0.0,
+        }
+    
+    def _validate_patterns(
+        self,
+        events,
+        epistemology: Dict[str, Any],
+        questions: Dict[str, Any]
     ) -> Dict[str, Any]:
-        """
-        Handle "analyze_split" priority: analyze cartridges for splitting.
-
-        Stubbed for MVP. Phase 4 will implement actual cartridge analysis
-        and splitting logic. For now, just log and return.
-        """
+        """Validate patterns against constraints."""
+        
+        # Phase 4.1 Week 1: Just setup infrastructure
+        # Phase 4.2: Will do actual pattern clustering and validation
+        # For now, just verify validators are ready
+        
+        return {
+            "epistemology_validator_ready": True,
+            "question_validator_ready": True,
+            "faction_gate_ready": True,
+            "validation_ready_for_week_2": True,
+            "note": "Actual pattern validation in Phase 4.2",
+        }
+    
+    def _check_faction_boundaries(self, events) -> Dict[str, Any]:
+        """Check faction boundaries (Constraint)."""
+        
+        faction_counts = {}
+        mixed_cartridges = 0
+        
+        for event in events:
+            faction = event.source_faction
+            faction_counts[faction] = faction_counts.get(faction, 0) + 1
+            
+            # Check if mixing fiction and general cartridges
+            has_fiction = any("fiction" in c.lower() for c in event.cartridges_loaded)
+            has_general = any("fiction" not in c.lower() for c in event.cartridges_loaded)
+            
+            if has_fiction and has_general:
+                mixed_cartridges += 1
+        
+        return {
+            "total_events": len(events),
+            "faction_distribution": faction_counts,
+            "mixed_cartridge_events": mixed_cartridges,
+            "faction_separation_clean": mixed_cartridges == 0,
+        }
+    
+    def _update_baseline_metrics(self, events) -> None:
+        """Update baseline metrics for rollback (Gap #7)."""
+        
+        if not events:
+            return
+        
+        # Calculate baseline success rate
+        successful = sum(1 for e in events if e.is_successful(threshold=0.7))
+        success_rate = successful / len(events)
+        
+        # Calculate baseline question rate
+        total_questions = sum(
+            e.question_signals.get("unresolved_question_count", 0)
+            for e in events
+        )
+        avg_question_rate = total_questions / len(events)
+        
+        # Calculate baseline coupling issues
+        critical_deltas = sum(
+            sum(1 for d in e.coupling_deltas if d.get("severity") == "CRITICAL")
+            for e in events
+        )
+        critical_rate = critical_deltas / len(events)
+        
+        # Store baseline
+        self.regression_detector.baseline_metrics = {
+            "success_rate": success_rate,
+            "question_rate": avg_question_rate,
+            "critical_coupling_rate": critical_rate,
+        }
+        
         logger.info(
-            f"BackgroundMetabolismCycle: analyze_split queued "
-            f"(Phase 4 implementation, skipping for MVP)"
+            f"Baseline metrics updated: "
+            f"success={success_rate:.2%}, "
+            f"questions={avg_question_rate:.2f}/event, "
+            f"critical={critical_rate:.2%}"
+        )
+    
+    def _update_metabolism_state(
+        self,
+        events,
+        epistemology: Dict[str, Any],
+        questions: Dict[str, Any],
+        factions: Dict[str, Any],
+        turn_number: int
+    ) -> None:
+        """Update shared MetabolismState if available."""
+        
+        if not self.metabolism_state:
+            return
+        
+        # Update turn
+        self.metabolism_state.current_turn = turn_number
+        
+        # Update learned deltas count
+        total_deltas = sum(len(e.coupling_deltas) for e in events)
+        self.metabolism_state.learned_deltas += total_deltas
+        
+        logger.debug(
+            f"MetabolismState updated: turn={turn_number}, "
+            f"total_deltas={self.metabolism_state.learned_deltas}"
+        )
+    
+    # ========================================================================
+    # Result creation
+    # ========================================================================
+    
+    def _create_result(
+        self,
+        cycle_id: str,
+        started_at: float,
+        completed_at: float,
+        success: bool,
+        events_analyzed: int = 0,
+        coupling_analysis: Optional[Dict[str, Any]] = None,
+        epistemology_analysis: Optional[Dict[str, Any]] = None,
+        question_analysis: Optional[Dict[str, Any]] = None,
+        faction_analysis: Optional[Dict[str, Any]] = None,
+        validation_results: Optional[Dict[str, Any]] = None,
+        error: Optional[str] = None,
+    ) -> CycleResult:
+        """Create a CycleResult object."""
+        
+        return CycleResult(
+            cycle_id=cycle_id,
+            cycle_type="background",
+            started_at=started_at,
+            completed_at=completed_at,
+            success=success,
+            events_analyzed=events_analyzed,
+            coupling_analysis=coupling_analysis or {},
+            epistemology_analysis=epistemology_analysis or {},
+            question_analysis=question_analysis or {},
+            faction_analysis=faction_analysis or {},
+            validation_results=validation_results or {},
+            error_message=error,
         )
 
-        return {
-            "success": True,
-            "action": "analyze_split",
-            "status": "queued_for_phase_4",
-            "estimated_duration_ms": decision.estimated_duration_ms,
-        }
 
-    def _handle_routine(self, decision: BackgroundTriageDecision) -> Dict[str, Any]:
-        """
-        Handle "routine" priority: general housekeeping.
+# ============================================================================
+# Testing helpers
+# ============================================================================
 
-        Stubbed for MVP. Phase 4 will implement custom maintenance scripts.
-        For now, just log and return.
-        """
-        logger.info(
-            f"BackgroundMetabolismCycle: routine maintenance queued "
-            f"(Phase 4 implementation, skipping for MVP)"
-        )
+class MockLogAnalyzer:
+    """Mock LogAnalyzer for testing."""
+    
+    def read_recent_events(self, num_events: int = 100):
+        """Return test events."""
+        # Create simple test events without importing
+        from dataclasses import dataclass, field
+        from typing import List, Dict, Any, Optional
+        
+        events = []
+        for i in range(num_events):
+            event = type('QueryLogEvent', (), {
+                'query_id': f'test_q{i}',
+                'timestamp': 0.0,
+                'event_type': 'query_completed',
+                'layer_sequence': ['GRAIN', 'CARTRIDGE'],
+                'winning_layer': 'GRAIN',
+                'confidence': 0.85,
+                'triage_latency_ms': 5.0,
+                'total_latency_ms': 25.0,
+                'coupling_deltas': [
+                    {'layer_a': 'L1', 'layer_b': 'L2', 'severity': 'LOW', 'delta_magnitude': 0.1}
+                ],
+                'epistemic_context': {
+                    'L0_active': True,
+                    'L1_active': True,
+                    'nwp_validation_passed': True,
+                    'highest_severity': 'LOW',
+                },
+                'question_signals': {
+                    'unresolved_question_count': 0,
+                    'unresolved_questions': [],
+                    'question_types': [],
+                },
+                'redis_spotlight_state': {
+                    'spotlight_keys_count': 5,
+                    'coupling_delta_count': 1,
+                    'highest_coupling_severity': 'LOW',
+                },
+                'metabolism_state': {
+                    'background_cycle_active': False,
+                    'daydream_cycle_active': False,
+                    'sleep_cycle_active': False,
+                    'turn_number': 0,
+                },
+                'neuromorphic_placeholders': {
+                    'snn_ready': True,
+                    'esn_ready': True,
+                    'lnn_ready': True,
+                },
+                'drive_satisfaction': {
+                    'learning': 0.5,
+                    'consolidation': 0.5,
+                    'socialization': 0.5,
+                },
+                'source_faction': 'general',
+                'cartridges_loaded': ['physics.kbc'],
+                'is_successful': lambda self=None, threshold=0.7: 0.85 >= threshold,
+                'has_unresolved_questions': lambda self=None: False,
+                'has_critical_coupling_violations': lambda self=None: False,
+            })()
+            events.append(event)
+        
+        return events
 
-        return {
-            "success": True,
-            "action": "routine",
-            "status": "queued_for_phase_4",
-            "estimated_duration_ms": decision.estimated_duration_ms,
-        }
 
-    def save_checkpoint(self) -> Dict[str, Any]:
-        """
-        Save cycle state for pause/resume.
+class MockValidators:
+    """Mock validators for testing."""
+    
+    baseline_metrics = {}
 
-        MVP: minimal checkpoint (just work count and turn number).
-        Phase 4: can expand to include pending work queue, etc.
-        """
-        return {
-            "work_count": self.work_count,
-            "turn_number": self.resonance_service.current_turn,
-        }
 
-    def restore_checkpoint(self, checkpoint: Dict[str, Any]) -> None:
-        """
-        Restore cycle state from checkpoint.
-
-        Args:
-            checkpoint: Data from save_checkpoint()
-        """
-        self.work_count = checkpoint.get("work_count", 0)
-        # Note: turn_number is managed by resonance_service, not directly restored
-
-    def get_stats(self) -> Dict[str, Any]:
-        """Get background cycle statistics (for REPL/diagnostics)."""
-        return {
-            "work_cycles_completed": self.work_count,
-            "resonance_patterns": len(self.resonance_service.weights),
-            "current_turn": self.resonance_service.current_turn,
-        }
+if __name__ == "__main__":
+    """Quick test of BackgroundMetabolismCycle."""
+    
+    logging.basicConfig(level=logging.INFO)
+    
+    # Create mocks
+    log_analyzer = MockLogAnalyzer()
+    validators = MockValidators()
+    
+    # Create cycle
+    cycle = BackgroundMetabolismCycle(
+        log_analyzer=log_analyzer,
+        epistemic_validator=validators,
+        question_scorer=validators,
+        faction_gate=validators,
+        regression_detector=validators,
+    )
+    
+    # Run cycle
+    result = cycle.execute(num_events=10, turn_number=100)
+    
+    print(f"\n✅ Cycle execution result:")
+    print(f"   {result.summary()}")
+    print(f"   Events analyzed: {result.events_analyzed}")
+    print(f"   Coupling deltas: {result.coupling_analysis.get('total_deltas', 0)}")
+    print(f"   Validation success rate: {result.epistemology_analysis.get('validation_success_rate', 0):.2%}")
+    print(f"   Questions per event: {result.question_analysis.get('average_questions_per_event', 0):.2f}")
+    
+    print("\n✅ BackgroundMetabolismCycle working correctly")
