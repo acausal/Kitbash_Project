@@ -28,6 +28,7 @@ from typing import Any, Dict, List, Optional
 
 from kitbash.interfaces.triage_agent import TriageAgent, TriageRequest, TriageDecision
 from kitbash.interfaces.inference_engine import InferenceEngine, InferenceRequest, InferenceResponse
+from kitbash.engines.grain_engine import InferenceEngineHint
 from kitbash.interfaces.mamba_context_service import MambaContextService, MambaContextRequest
 from kitbash.memory.resonance_weights import ResonanceWeightService
 from kitbash.metabolism.heartbeat_service import HeartbeatService
@@ -158,8 +159,7 @@ class QueryOrchestrator:
         # PHASE 1: Metabolism check
         if self.metabolism_scheduler:
             try:
-                # Sync turn to scheduler before checking if work is due
-                self.metabolism_scheduler.current_turn = self.heartbeat.turn_number
+                # MetabolismScheduler reads turn from heartbeat_service.current_turn directly
                 bg_status = self.metabolism_scheduler.step()
                 if bg_status.get("executed"):
                     self._metrics["metabolism_cycles_run"] += 1
@@ -345,8 +345,33 @@ class QueryOrchestrator:
                 engine_name=layer_name, confidence=resp.confidence if resp else 0.0,
                 threshold=threshold, passed=passed, latency_ms=latency
             ), resp
+        except InferenceEngineHint as hint:
+            # Engine found a partial match but below its own confidence threshold.
+            # Record as a low-confidence miss (not an error) and pass the hint data
+            # through so the next layer can potentially use it.
+            latency = hint.latency_ms
+            logger.info(
+                f"Layer {layer_name} returned hint (confidence={hint.confidence:.2f}), "
+                f"escalating to next layer"
+            )
+            self.feed.log_escalation(query_id, layer_name, f"hint:{hint.confidence:.2f}")
+            # Build an InferenceResponse so downstream can see the hint
+            hint_response = InferenceResponse(
+                answer=None,
+                confidence=hint.confidence,
+                engine_name=hint.engine_name,
+                sources=[],
+                latency_ms=latency,
+                metadata={"hint": hint.hint},
+            )
+            return LayerAttempt(
+                engine_name=layer_name, confidence=hint.confidence,
+                threshold=threshold, passed=False, latency_ms=latency,
+                error=None,  # Not an error -- it's a controlled escalation
+            ), hint_response
         except Exception as e:
             latency = (time.perf_counter() - start) * 1000
+            self.feed.log_error(query_id, layer_name, str(e))
             return LayerAttempt(
                 engine_name=layer_name, confidence=0.0, threshold=threshold,
                 passed=False, latency_ms=latency, error=str(e)

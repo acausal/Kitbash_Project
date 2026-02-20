@@ -14,4 +14,8 @@ redis>=5.0.0
 # - sys, time, uuid, json, logging, pathlib, dataclasses, typing, os, hashlib
 # - datetime, collections, enum, abc
 
+# Development & Testing
+pytest>=7.4.0
+httpx>=0.25.0  # Required for FastAPI TestClient
+
 # Python version: 3.10+ (tested with 3.11.14)

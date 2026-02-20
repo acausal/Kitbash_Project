@@ -81,6 +81,15 @@ from kitbash.metabolism.heartbeat_service import HeartbeatService
 from kitbash.metabolism.metabolism_scheduler import MetabolismScheduler
 from kitbash.metabolism.background_metabolism_cycle import BackgroundMetabolismCycle
 
+# Phase 4.1 safety infrastructure (optional, graceful degradation if unavailable)
+try:
+    from safety_infrastructure import (
+        EpistemicValidator, QuestionAdjustedScorer, FactionGate, RegressionDetector
+    )
+    _PHASE4_SAFETY_AVAILABLE = True
+except ImportError:
+    _PHASE4_SAFETY_AVAILABLE = False
+
 # --- Logging setup ---
 logging.basicConfig(
     level=logging.INFO,
@@ -246,8 +255,18 @@ def _initialize_orchestrator() -> QueryOrchestrator:
         resonance = ResonanceWeightService()
         heartbeat = HeartbeatService(initial_turn=0)
 
-        # Initialize background metabolism cycle and scheduler
-        bg_cycle = BackgroundMetabolismCycle(triage_agent, resonance)
+        # Initialize Phase 4.1 background metabolism cycle and scheduler
+        # Safety infrastructure provides optional validators; cycle degrades gracefully if absent
+        if _PHASE4_SAFETY_AVAILABLE:
+            bg_cycle = BackgroundMetabolismCycle(
+                log_analyzer=None,  # Will be connected when Redis is available
+                epistemic_validator=EpistemicValidator(),
+                question_scorer=QuestionAdjustedScorer(),
+                faction_gate=FactionGate(),
+                regression_detector=RegressionDetector(),
+            )
+        else:
+            bg_cycle = BackgroundMetabolismCycle()  # All deps None, graceful no-op
         metabolism_scheduler = MetabolismScheduler(bg_cycle, heartbeat, background_interval=100)
 
         # Build engines dict

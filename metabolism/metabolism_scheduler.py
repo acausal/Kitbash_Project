@@ -38,7 +38,7 @@ class MetabolismScheduler:
         self,
         background_cycle,  # BackgroundMetabolismCycle
         heartbeat_service,  # HeartbeatService
-        background_interval: int = 1,  # Run background every N turns
+        background_interval: int = 100,  # Run background every N turns
     ):
         """
         Initialize scheduler.
